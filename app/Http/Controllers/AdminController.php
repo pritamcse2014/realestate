@@ -9,6 +9,6 @@ class AdminController extends Controller
     public function AdminDashboard() {
         // echo 'Admin';
         // die();
-        return view('admin.admin_dashboard');
+        return view('admin.index');
     }
 }
