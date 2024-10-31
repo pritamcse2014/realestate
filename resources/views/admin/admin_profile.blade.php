@@ -1,6 +1,9 @@
 @extends('admin.admin_dashboard')
 @section('admin')
 <div class="page-content">
+
+    @include('_message')
+
     <div class="row profile-body">
         <!-- left wrapper start -->
         <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper">
@@ -42,41 +45,50 @@
                         <div class="card-body">
                             <h6 class="card-title">Profile Update</h6>
 
-                            <form class="forms-sample" action="" method="POST">
+                            <form class="forms-sample" action="{{ url('admin_profile/update') }}" method="POST" enctype="multipart/form-data">
+                                {{ csrf_field() }}
                                 <div class="mb-3">
                                     <label class="form-label">Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Name" />
+                                    <input type="text" name="name" class="form-control" placeholder="Name" value="{{ $getRecord->name }}" />
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Username</label>
-                                    <input type="text" name="username" class="form-control" placeholder="Username" />
+                                    <input type="text" name="username" class="form-control" placeholder="Username" value="{{ $getRecord->username }}" />
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Email" />
+                                    <input type="email" name="email" class="form-control" placeholder="Email" value="{{ $getRecord->email }}" />
+                                    <span style="color: red;">{{ $errors->first('email') }}</span>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Phone</label>
+                                    <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ $getRecord->phone }}" />
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Password</label>
-                                    <input type="password" name="password" class="form-control" placeholder="Password" />
+                                    <input type="password" name="password" class="form-control mb-1" placeholder="Password" />
+                                    (Leave blank if you are not changing the password.)
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Photo</label>
                                     <input type="file" name="photo" class="form-control" />
+                                    @if (!empty($getRecord->photo))
+                                        <img style="width: 10%; height: 10%" src="{{ asset('upload/'.$getRecord->photo) }}" alt="Upload Photo" srcset="">
+                                    @endif
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">About</label>
-                                    <textarea class="form-control" type="text" name="about" cols="30" rows="10" placeholder="About"></textarea>
+                                    <textarea class="form-control" type="text" name="about" cols="30" rows="10" placeholder="About">{{ $getRecord->about }}</textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Address</label>
-                                    <input type="text" name="address" class="form-control" placeholder="Address" />
+                                    <input type="text" name="address" class="form-control" placeholder="Address" value="{{ $getRecord->address }}" />
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Website</label>
-                                    <input type="text" name="website" class="form-control" placeholder="Website" />
+                                    <input type="text" name="website" class="form-control" placeholder="Website" value="{{ $getRecord->website }}" />
                                 </div>
-                                <button type="submit" class="btn btn-primary me-2">Submit</button>
-                                <button class="btn btn-secondary">Cancel</button>
+                                <button type="submit" class="btn btn-primary me-2">Update</button>
                             </form>
                         </div>
                     </div>
