@@ -27,4 +27,10 @@ class AdminController extends Controller
         // die();
         return view('admin.admin_login');
     }
+
+    public function AdminProfile() {
+        // echo "Profile";
+        // die();
+        return view('admin.admin_profile');
+    }
 }
