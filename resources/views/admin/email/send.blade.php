@@ -3,7 +3,9 @@
 <!-- partial -->
 
 <div class="page-content">
-        
+
+    @include('_message')
+    
     <div class="row inbox-wrapper">
         <div class="col-lg-12">
         <div class="card">
@@ -120,7 +122,7 @@
                     <div class="btn-group me-2">
                         <button class="btn btn-outline-primary" type="button">Archive</button>
                         <button class="btn btn-outline-primary" type="button">Span</button>
-                        <button class="btn btn-outline-primary" type="button">Delete</button>
+                        <a onclick="return confirm('Are You Sure You Want To Delete?');" id="getDeleteUrl" class="btn btn-outline-primary">Delete</a>
                     </div>
                     <div class="btn-group me-2 d-none d-xl-block">
                         <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" type="button">Order by <span class="caret"></span></button>
@@ -149,7 +151,7 @@
                     <div class="email-list-item email-list-item--unread">
                     <div class="email-list-actions">
                         <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
+                        <input type="checkbox" class="form-check-input delete-all-option" value="{{ $value->id }}">
                         </div>
                         <a class="favorite" href="javascript:;"><span><i data-feather="star"></i></span></a>
                     </div>
@@ -173,4 +175,22 @@
     </div>
 
         </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.delete-all-option').change(function() {
+                let selectedIds = [];
+
+                $('.delete-all-option:checked').each(function() {
+                    selectedIds.push($(this).val());
+                });
+
+                let ids = selectedIds.join(',');
+                let deleteUrl = '{{ url('admin/email/delete?id=') }}' + ids;
+                $('#getDeleteUrl').attr('href', deleteUrl);
+            });
+        });
+    </script>
 @endsection
