@@ -42,6 +42,9 @@
                         <li class="nav-item">
                             <a href="{{ url('admin/email/compose') }}" class="nav-link">Compose</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/email/sent') }}" class="nav-link">Sent</a>
+                        </li>
                     </ul>
                 </div>
             </li>

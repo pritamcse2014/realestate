@@ -38,6 +38,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
     Route::post('admin/email/composePost', [EmailController::class, 'adminEmailComposePost']);
+
+    Route::get('admin/email/sent', [EmailController::class, 'adminEmailSent']);
 });
 
 Route::middleware(['auth', 'role:agent'])->group(function() {
