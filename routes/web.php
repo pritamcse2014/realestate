@@ -42,6 +42,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::get('admin/email/sent', [EmailController::class, 'adminEmailSent']);
 
     Route::get('admin/email/delete', [EmailController::class, 'adminEmailDelete']);
+
+    Route::get('admin/email/read/{id}', [EmailController::class, 'adminEmailRead']);
+
+    Route::get('admin/email/read/delete/{id}', [EmailController::class, 'adminEmailReadDelete']);
 });
 
 Route::middleware(['auth', 'role:agent'])->group(function() {

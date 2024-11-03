@@ -139,7 +139,6 @@
                         <div>
                         <div class="col-md-12">
                             <button class="btn btn-primary me-1 mb-1" type="submit"> Send</button>
-                            <button class="btn btn-secondary me-1 mb-1" type="button"> Cancel</button>
                         </div>
                         </div>
                     </div>
