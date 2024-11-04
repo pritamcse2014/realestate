@@ -72,10 +72,10 @@ class AdminController extends Controller
         return redirect('admin/profile')->with('success', 'Profile Updated Successfully.');
     }
 
-    public function adminUsers() {
+    public function adminUsers(Request $request) {
         // echo "Users";
         // die();
-        $data['getRecord'] = User::getRecord();
+        $data['getRecord'] = User::getRecord($request);
         return view('admin.users.list', $data);
     }
 

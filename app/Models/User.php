@@ -45,6 +45,32 @@ class User extends Authenticatable
     static public function getRecord() {
         $return = self::select('users.*')
                     ->orderBy('id', 'desc');
+                    // Search Start
+                    if (!empty(request('id'))) {
+                        $return = $return->where('users.id', '=', request('id'));
+                    }
+                    if (!empty(request('name'))) {
+                        $return = $return->where('users.name', 'like', '%'. request('name') .'%');
+                    }
+                    if (!empty(request('username'))) {
+                        $return = $return->where('users.username', 'like', '%'. request('username') .'%');
+                    }
+                    if (!empty(request('email'))) {
+                        $return = $return->where('users.email', 'like', '%'. request('email') .'%');
+                    }
+                    if (!empty(request('phone'))) {
+                        $return = $return->where('users.phone', 'like', '%'. request('phone') .'%');
+                    }
+                    if (!empty(request('website'))) {
+                        $return = $return->where('users.website', 'like', '%'. request('website') .'%');
+                    }
+                    if (!empty(request('role'))) {
+                        $return = $return->where('users.role', 'like', '%'. request('role') .'%');
+                    }
+                    if (!empty(request('status'))) {
+                        $return = $return->where('users.status', '=', request('status'));
+                    }
+                    // Search End
                     $return = $return->paginate(10);
                     return $return;
     }
