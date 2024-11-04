@@ -1,5 +1,4 @@
-@extends('admin.admin_dashboard')
-@section('admin')
+@extends('admin.admin_dashboard') @section('admin')
 <div class="page-content">
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
@@ -7,6 +6,79 @@
             <li class="breadcrumb-item active" aria-current="page">Users List</li>
         </ol>
     </nav>
+    <div class="row">
+        <div class="col-lg-12 stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Search Users</h6>
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your ID</label>
+                                    <input class="form-control" type="text" name="id" id="id" placeholder="Enter Your ID" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Name</label>
+                                    <input class="form-control" type="text" name="name" id="name" placeholder="Enter Your Name" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your User Name</label>
+                                    <input class="form-control" type="text" name="username" id="username" placeholder="Enter Your User Name" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Email</label>
+                                    <input class="form-control" type="email" name="email" id="email" placeholder="Enter Your Email" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Phone</label>
+                                    <input class="form-control" type="tel" name="phone" id="phone" placeholder="Enter Your Phone" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Website</label>
+                                    <input class="form-control" type="text" name="website" id="website" placeholder="Enter Your Website" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Role</label>
+                                    <select class="form-control" name="role" id="role">
+                                        <option value="">Select Your Role</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="agent">Agent</option>
+                                        <option value="user">User</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Status</label>
+                                    <select class="form-control" name="status" id="status">
+                                        <option value="">Select Your Status</option>
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary me-1" type="submit">Search</button>
+                        <a class="btn btn-danger ms-1" href="{{ url('admin/users') }}">Reset</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
     <div class="row">
         <div class="col-lg-12 stretch-card">
             <div class="card">
@@ -65,7 +137,24 @@
                                     </td>
                                     <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
                                     <td>
-                                        <a class="dropdown-item d-flex align-items-center" href="{{ url('admin/users/view/'.$value->id) }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye icon-sm me-2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> <span class="">View</span></a>
+                                        <a class="dropdown-item d-flex align-items-center" href="{{ url('admin/users/view/'.$value->id) }}">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="feather feather-eye icon-sm me-2"
+                                            >
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg>
+                                            <span class="">View</span>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach
