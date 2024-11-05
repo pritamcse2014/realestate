@@ -13,29 +13,31 @@
                 <div class="card-body">
                     <h6 class="card-title">Add User</h6>
 
-                    <form class="forms-sample">
+                    <form class="forms-sample" method="POST" action="{{ url('admin/users/add') }}">
+                        {{ csrf_field() }}
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Name <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Enter Your Name" required />
+                                <input type="text" name="name" class="form-control" placeholder="Enter Your Name" required />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Username <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Enter Your Username" required />
+                                <input type="text" name="username" class="form-control" placeholder="Enter Your Username" required />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Email <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" autocomplete="off" placeholder="Enter Your Email" required />
+                                <input type="email" name="email" class="form-control" autocomplete="off" placeholder="Enter Your Email" value="{{ old('email') }}" required />
+                                <span style="color: red;">{{ $errors->first('email') }}</span>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Phone</label>
                             <div class="col-sm-9">
-                                <input type="phone" class="form-control" placeholder="Enter Your Phone" />
+                                <input type="phone" name="phone" class="form-control" placeholder="Enter Your Phone" />
                             </div>
                         </div>
                         <div class="row mb-3">
