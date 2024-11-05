@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Mail\RegisteredMail;
+use App\Http\Requests\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -115,5 +116,24 @@ class AdminController extends Controller
         Mail::to($save->email)->send(new RegisteredMail($save));
 
         return redirect('admin/users')->with('success', 'User Create Successfully.');
+    }
+
+    public function setNewPassword($token) {
+        // echo $token;
+        // die();
+        $data['token'] = $token;
+        return view('auth.reset_password', $data);
+    }
+
+    public function resetNewPassword($token, ResetPassword $request) {
+        $user = User::where('remember_token', '=', $token);
+        if ($user->count() === 0) {
+            about(403);
+        }
+        $user = $user->first();
+        $user->password = Hash::make($request->password);
+        $user->remember_token = Str::random(50);
+        $user->save();
+        return redirect('admin/login')->with('success', 'Password Reset Successfully.');
     }
 }

@@ -56,4 +56,8 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
     Route::get('agent/dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
 });
 
+Route::get('setNewPassword/{token}', [AdminController::class, 'setNewPassword']);
+
+Route::post('setNewPassword/{token}', [AdminController::class, 'resetNewPassword']);
+
 Route::get('admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
