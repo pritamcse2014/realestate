@@ -26,6 +26,7 @@ return new class extends Migration
             $table->enum('role', ['admin', 'agent', 'user'])->default('user');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->rememberToken();
+            $table->tinyInteger('is_delete')->default(0);
             $table->timestamps();
         });
 

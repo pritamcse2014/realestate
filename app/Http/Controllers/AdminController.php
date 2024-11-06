@@ -138,6 +138,15 @@ class AdminController extends Controller
         return redirect('admin/users')->with('success', 'User Updated Successfully.');
     }
 
+    public function adminUserDelete($id, Request $request) {
+        // dd($id);
+        $delete = User::find($id);
+        $delete->is_delete = 1;
+        $delete->save();
+
+        return redirect('admin/users')->with('success', 'User Deleted Successfully.');
+    }
+
     public function setNewPassword($token) {
         // echo $token;
         // die();
