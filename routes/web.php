@@ -39,6 +39,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::post('admin/users/add', [AdminController::class, 'adminStoreUser']);
 
+    Route::get('admin/users/edit/{id}', [AdminController::class, 'adminUserEdit']);
+
+    Route::post('admin/users/edit/{id}', [AdminController::class, 'adminUserUpdate']);
+
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
     Route::post('admin/email/composePost', [EmailController::class, 'adminEmailComposePost']);

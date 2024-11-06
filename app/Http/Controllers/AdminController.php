@@ -118,6 +118,26 @@ class AdminController extends Controller
         return redirect('admin/users')->with('success', 'User Create Successfully.');
     }
 
+    public function adminUserEdit($id) {
+        // echo $id;
+        // die();
+        $data['getRecord'] = User::find($id);
+        return view('admin.users.edit', $data);
+    }
+
+    public function adminUserUpdate($id, Request $request) {
+        // dd($request->all());
+        $save = User::find($id);
+        $save->name = trim($request->name);
+        $save->username = trim($request->username);
+        $save->phone = trim($request->phone);
+        $save->role = trim($request->role);
+        $save->status = trim($request->status);
+        $save->save();
+
+        return redirect('admin/users')->with('success', 'User Updated Successfully.');
+    }
+
     public function setNewPassword($token) {
         // echo $token;
         // die();
