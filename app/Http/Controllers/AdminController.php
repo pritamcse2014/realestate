@@ -161,6 +161,14 @@ class AdminController extends Controller
         echo json_encode($json);
     }
 
+    public function adminUserChangeStatus(Request $request) {
+        $data = User::find($request->order_id);
+        $data->status = $request->status_id;
+        $data->save();
+        $json['success'] = true;
+        echo json_encode($json);
+    }
+
     public function setNewPassword($token) {
         // echo $token;
         // die();

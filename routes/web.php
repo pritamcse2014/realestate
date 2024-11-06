@@ -47,6 +47,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::post('admin/users/update', [AdminController::class, 'adminUserUpdateName']);
 
+    Route::get('admin/users/change-status', [AdminController::class, 'adminUserChangeStatus']);
+
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
     Route::post('admin/email/composePost', [EmailController::class, 'adminEmailComposePost']);
