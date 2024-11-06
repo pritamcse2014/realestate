@@ -71,6 +71,9 @@ class User extends Authenticatable
                     if (!empty(request('status'))) {
                         $return = $return->where('users.status', '=', request('status'));
                     }
+                    if (!empty(request('start_date')) && !empty(request('end_date'))) {
+                        $return = $return->where('users.created_at', '>=', request('start_date'))->where('users.created_at', '<=', request('end_date'));
+                    }
                     // Search End
                     $return = $return->paginate(10);
                     return $return;

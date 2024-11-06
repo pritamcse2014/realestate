@@ -88,6 +88,18 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Start Date</label>
+                                    <input class="form-control" type="date" name="start_date" id="start_date" value="{{ Request()->start_date }}" placeholder="Enter Your Start Date" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your End Date</label>
+                                    <input class="form-control" type="date" name="end_date" id="end_date" value="{{ Request()->end_date }}" placeholder="Enter Your End Date" />
+                                </div>
+                            </div>
                         </div>
                         <button class="btn btn-primary me-1" type="submit">Search</button>
                         <a class="btn btn-danger ms-1" href="{{ url('admin/users') }}">Reset</a>
