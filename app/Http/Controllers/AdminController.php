@@ -153,6 +153,14 @@ class AdminController extends Controller
         return redirect('admin/users')->with('success', 'User Deleted Successfully.');
     }
 
+    public function adminUserUpdateName(Request $request) {
+        $data = User::find($request->input('edit_id'));
+        $data->name = $request->input('edit_name');
+        $data->save();
+        $json['success'] = 'Name Updated Successfully.';
+        echo json_encode($json);
+    }
+
     public function setNewPassword($token) {
         // echo $token;
         // die();
