@@ -79,6 +79,12 @@ class AdminController extends Controller
         // echo "Users";
         // die();
         $data['getRecord'] = User::getRecord($request);
+        $data['TotalAdmin'] = User::where('role', '=', 'admin')->where('is_delete', '=', 0)->count();
+        $data['TotalAgent'] = User::where('role', '=', 'agent')->where('is_delete', '=', 0)->count();
+        $data['TotalUser'] = User::where('role', '=', 'user')->where('is_delete', '=', 0)->count();
+        $data['TotalActive'] = User::where('status', '=', 'active')->where('is_delete', '=', 0)->count();
+        $data['TotalInactive'] = User::where('status', '=', 'inactive')->where('is_delete', '=', 0)->count();
+        $data['Total'] = User::where('is_delete', '=', 0)->count();
         return view('admin.users.list', $data);
     }
 

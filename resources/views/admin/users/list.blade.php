@@ -9,6 +9,20 @@
             <li class="breadcrumb-item"><a href="#">Users</a></li>
             <li class="breadcrumb-item active" aria-current="page">Users List</li>
         </ol>
+        <div class="d-flex align-items-center">
+            <a href="javascript:void(0)" class="btn btn-primary"> Admin - {{ $TotalAdmin }}</a>
+            &nbsp;&nbsp;
+            <a href="javascript:void(0)" class="btn btn-secondary"> Agent - {{ $TotalAgent }}</a>
+            &nbsp;&nbsp;
+            <a href="javascript:void(0)" class="btn btn-warning"> User - {{ $TotalUser }}</a>
+            &nbsp;&nbsp;
+            <a href="javascript:void(0)" class="btn btn-info"> Active - {{ $TotalActive }}</a>
+            &nbsp;&nbsp;
+            <a href="javascript:void(0)" class="btn btn-danger"> Inactive - {{ $TotalInactive }}</a>
+            &nbsp;&nbsp;
+            <a href="javascript:void(0)" class="btn btn-success"> Total - {{ $Total }}</a>
+            &nbsp;&nbsp;
+        </div>
     </nav>
     <div class="row">
         <div class="col-lg-12 stretch-card">
