@@ -169,6 +169,35 @@ class AdminController extends Controller
         echo json_encode($json);
     }
 
+    public function adminEditProfile() {
+        // echo "Edit";
+        // die();
+        $data['getRecord'] = User::find(Auth::user()->id);
+        return view('admin/edit_profile', $data);
+    }
+
+    public function adminEditProfileUpdate(Request $request) {
+        // dd($request->all());
+        $user = request()->validate([
+            'email' => 'required|unique:users,email,'.Auth::user()->id
+        ]);
+        $user = User::find(Auth::user()->id);
+        $user->name = trim($request->name);
+        $user->email = trim($request->email);
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+        if (!empty($request->file('photo'))) {
+            $file = $request->file('photo');
+            $randomStr = Str::random(30);
+            $filename = $randomStr .'.'. $file->getClientOriginalExtension();
+            $file->move('upload/', $filename);
+            $user->photo = $filename;
+        }
+        $user->save();
+        return redirect('admin/edit_profile')->with('success', 'Profile Updated.');
+    }
+
     public function setNewPassword($token) {
         // echo $token;
         // die();
