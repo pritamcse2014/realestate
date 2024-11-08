@@ -70,6 +70,8 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
     Route::get('agent/dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
 
     Route::get('agent/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
+    
+    Route::get('agent/email/inbox', [AdminController::class, 'AgentEmailInbox']);
 });
 
 Route::get('setNewPassword/{token}', [AdminController::class, 'setNewPassword']);
