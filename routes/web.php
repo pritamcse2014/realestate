@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserTimeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -52,6 +53,18 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::post('admin/users/update', [AdminController::class, 'adminUserUpdateName']);
 
     Route::get('admin/users/change-status', [AdminController::class, 'adminUserChangeStatus']);
+
+    Route::get('admin/week', [UserTimeController::class, 'adminWeekList']);
+
+    Route::get('admin/week/add', [UserTimeController::class, 'adminAddWeek']);
+
+    Route::post('admin/week/add', [UserTimeController::class, 'adminStoreWeek']);
+
+    Route::get('admin/week/edit/{id}', [UserTimeController::class, 'adminWeekEdit']);
+
+    Route::post('admin/week/edit/{id}', [UserTimeController::class, 'adminWeekUpdate']);
+
+    Route::get('admin/week/delete/{id}', [UserTimeController::class, 'adminWeekDelete']);
 
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
