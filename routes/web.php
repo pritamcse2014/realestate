@@ -78,6 +78,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/time/delete/{id}', [UserTimeController::class, 'adminTimeDelete']);
 
+    Route::get('admin/schedule', [UserTimeController::class, 'adminScheduleList']);
+
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
     Route::post('admin/email/composePost', [EmailController::class, 'adminEmailComposePost']);

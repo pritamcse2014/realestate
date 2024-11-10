@@ -91,4 +91,12 @@ class UserTimeController extends Controller
 
         return redirect('admin/time')->with('success', 'Time Deleted Successfully.');
     }
+
+    public function adminScheduleList() {
+        // echo "Schedule";
+        // die();
+        $data['week'] = Week::get();
+        $data['time'] = Time::get();
+        return view('admin.schedule.list', $data);
+    }
 }
