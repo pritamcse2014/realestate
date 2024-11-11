@@ -30,8 +30,8 @@
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Email <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="email" name="email" class="form-control" autocomplete="off" placeholder="Enter Your Email" value="{{ old('email') }}" required />
-                                <span style="color: red;">{{ $errors->first('email') }}</span>
+                                <input type="email" name="email" class="form-control" autocomplete="off" placeholder="Enter Your Email" value="{{ old('email') }}" onblur="duplicateEmail(this)" required />
+                                <span style="color: red;" class="duplicate-message">{{ $errors->first('email') }}</span>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -69,4 +69,32 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script type="text/javascript">
+    function duplicateEmail(element) {
+        var email = $(element).val();
+        // alert(email);
+        $.ajax({
+            type: "POST",
+            url: '{{ url('checkemail') }}',
+            data: {
+                email: email,
+                _token: "{{ csrf_token() }}"
+            },
+            dataType: "json",
+            success: function (res) {
+                if (res.exists) {
+                    $(".duplicate-message").html("That Email is Taken. Try Another.");
+                } else {
+                    $(".duplicate-message").html("");
+                }
+            },
+            error: function (jqXHR, exception) {
+
+            }
+        });
+    }
+</script>
 @endsection

@@ -54,6 +54,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/users/change-status', [AdminController::class, 'adminUserChangeStatus']);
 
+    Route::post('checkemail', [AdminController::class, 'checkEmail']);
+
     Route::get('admin/week', [UserTimeController::class, 'adminWeekList']);
 
     Route::get('admin/week/add', [UserTimeController::class, 'adminAddWeek']);
