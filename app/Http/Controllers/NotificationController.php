@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -15,6 +16,12 @@ class NotificationController extends Controller
 
     public function adminNotificationSend(Request $request) {
         // dd($request->all());
+        $saveDB = new Notification;
+        $saveDB->userId = trim($request->userId);
+        $saveDB->title = trim($request->title);
+        $saveDB->message = trim($request->message);
+        $saveDB->save();
+        
         $user = User::where('id', '=', $request->userId)->first();
         // dd($user);
         // dd($user->token);
