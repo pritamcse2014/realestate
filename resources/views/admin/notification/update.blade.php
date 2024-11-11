@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Push Notification</h6>
 
-                    <form class="forms-sample" method="POST" action="" enctype="multipart/form-data">
+                    <form class="forms-sample" method="POST" action="{{ url('admin/notificationSend') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Select Your Name / Username / Role <span style="color: red;"> *</span></label>

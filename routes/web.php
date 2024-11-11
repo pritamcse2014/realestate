@@ -86,6 +86,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::post('admin/schedule', [UserTimeController::class, 'adminScheduleUpdate']);
 
     Route::get('admin/notification', [NotificationController::class, 'adminNotificationUpdate']);
+    
+    Route::post('admin/notificationSend', [NotificationController::class, 'adminNotificationSend']);
 
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
