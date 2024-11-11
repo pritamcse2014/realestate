@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserTimeController;
 use Illuminate\Support\Facades\Route;
@@ -83,6 +84,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::get('admin/schedule', [UserTimeController::class, 'adminScheduleList']);
 
     Route::post('admin/schedule', [UserTimeController::class, 'adminScheduleUpdate']);
+
+    Route::get('admin/notification', [NotificationController::class, 'adminNotificationUpdate']);
 
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
