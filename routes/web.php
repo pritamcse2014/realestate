@@ -96,6 +96,12 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::post('admin/qrcode/add', [QRCodeController::class, 'adminStoreQRCode']);
 
+    Route::get('admin/qrcode/edit/{id}', [QRCodeController::class, 'adminQRCodeEdit']);
+
+    Route::post('admin/qrcode/edit/{id}', [QRCodeController::class, 'adminQRCodeUpdate']);
+
+    Route::get('admin/qrcode/delete/{id}', [QRCodeController::class, 'adminQRCodeDelete']);
+
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
     Route::post('admin/email/composePost', [EmailController::class, 'adminEmailComposePost']);
