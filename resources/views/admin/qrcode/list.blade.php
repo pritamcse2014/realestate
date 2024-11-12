@@ -27,12 +27,24 @@
                                     <th>Title</th>
                                     <th>Price</th>
                                     <th>Product Code</th>
-                                    <th>Decription</th>
+                                    <th>Description</th>
                                     <th>Created At</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                                @foreach ($getRecord as $value)
+                                <tr class="table-info text-dark">
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->title }}</td>
+                                    <td>{{ $value->price }}</td>
+                                    <td>
+                                        {!! DNS2D::getBarcodeHTML("$value->product_code", 'QRCODE') !!} Product: {{ $value->product_code }}
+                                    </td>
+                                    <td>{{ $value->description }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                     <div style="padding: 20px; float: right;"></div>

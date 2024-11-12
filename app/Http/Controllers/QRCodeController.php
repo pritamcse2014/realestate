@@ -10,7 +10,8 @@ class QRCodeController extends Controller
     public function adminQRCodeList() {
         // echo "QR";
         // die();
-        return view('admin.qrcode.list');
+        $data['getRecord'] = Product::get();
+        return view('admin.qrcode.list', $data);
     }
 
     public function adminAddQRCode() {
