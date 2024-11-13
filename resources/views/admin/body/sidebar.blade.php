@@ -24,6 +24,12 @@
                     <span class="link-title">Users</span>
                 </a>
             </li>
+            <li class="nav-item @if(Request::segment(2) === 'users') active @endif">
+                <a href="{{ url('admin/color') }}" class="nav-link">
+                    <i class="link-icon" data-feather="feather"></i>
+                    <span class="link-title">Color</span>
+                </a>
+            </li>
             <li class="nav-item nav-category">User Week</li>
             <li class="nav-item @if(Request::segment(2) === 'week') active @endif">
                 <a href="{{ url('admin/week') }}" class="nav-link">

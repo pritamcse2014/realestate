@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\ColorController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
@@ -106,6 +107,18 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::get('admin/smtp', [SMTPController::class, 'adminSMTPUpdate']);
 
     Route::post('admin/smtpSend', [SMTPController::class, 'adminSMTPSend']);
+
+    Route::get('admin/color', [ColorController::class, 'adminColorList']);
+
+    Route::get('admin/color/add', [ColorController::class, 'adminAddColor']);
+
+    Route::post('admin/color/add', [ColorController::class, 'adminStoreColor']);
+
+    Route::get('admin/color/edit/{id}', [ColorController::class, 'adminColorEdit']);
+
+    Route::post('admin/color/edit/{id}', [ColorController::class, 'adminColorUpdate']);
+    
+    Route::get('admin/color/delete/{id}', [ColorController::class, 'adminColorDelete']);
 
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
