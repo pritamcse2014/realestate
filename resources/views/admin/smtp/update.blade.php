@@ -20,56 +20,56 @@
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your App Name <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="text" name="app_name" class="form-control" autocomplete="off" placeholder="Enter Your App Name" value="" required />
+                                <input type="text" name="app_name" class="form-control" autocomplete="off" placeholder="Enter Your App Name" value="{{ $getRecord->app_name }}" required />
                                 <span style="color: red;">{{ $errors->first('app_name') }}</span>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Mail Mailer <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="text" name="mail_mailer" class="form-control" autocomplete="off" placeholder="Enter Your Mail Mailer" value="" required />
+                                <input type="text" name="mail_mailer" class="form-control" autocomplete="off" placeholder="Enter Your Mail Mailer" value="{{ $getRecord->mail_mailer }}" required />
                                 <span style="color: red;">{{ $errors->first('mail_mailer') }}</span>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Mail Host <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="text" name="mail_host" class="form-control" autocomplete="off" placeholder="Enter Your Mail Host" value="" required />
+                                <input type="text" name="mail_host" class="form-control" autocomplete="off" placeholder="Enter Your Mail Host" value="{{ $getRecord->mail_host }}" required />
                                 <span style="color: red;">{{ $errors->first('mail_host') }}</span>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Mail Port <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="number" name="mail_port" class="form-control" autocomplete="off" placeholder="Enter Your Mail Port" value="" required />
+                                <input type="number" name="mail_port" class="form-control" autocomplete="off" placeholder="Enter Your Mail Port" value="{{ $getRecord->mail_port }}" required />
                                 <span style="color: red;">{{ $errors->first('mail_port') }}</span>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Mail Username <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="text" name="mail_username" class="form-control" autocomplete="off" placeholder="Enter Your Mail Username" value="" required />
+                                <input type="text" name="mail_username" class="form-control" autocomplete="off" placeholder="Enter Your Mail Username" value="{{ $getRecord->mail_username }}" required />
                                 <span style="color: red;">{{ $errors->first('mail_username') }}</span>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Mail Password <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="password" name="mail_password" class="form-control" autocomplete="off" placeholder="Enter Your Mail Password" value="" required />
+                                <input type="password" name="mail_password" class="form-control" autocomplete="off" placeholder="Enter Your Mail Password" value="{{ $getRecord->mail_password }}" required />
                                 <span style="color: red;">{{ $errors->first('mail_password') }}</span>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Mail Encryption <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="text" name="mail_encryption" class="form-control" autocomplete="off" placeholder="Enter Your Mail Encryption" value="" required />
+                                <input type="text" name="mail_encryption" class="form-control" autocomplete="off" placeholder="Enter Your Mail Encryption" value="{{ $getRecord->mail_encryption }}" required />
                                 <span style="color: red;">{{ $errors->first('mail_encryption') }}</span>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Mail From Address <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="email" name="mail_from_address" class="form-control" autocomplete="off" placeholder="Enter Your Mail From Address" value="" required />
+                                <input type="email" name="mail_from_address" class="form-control" autocomplete="off" placeholder="Enter Your Mail From Address" value="{{ $getRecord->mail_from_address }}" required />
                                 <span style="color: red;">{{ $errors->first('mail_from_address') }}</span>
                             </div>
                         </div>

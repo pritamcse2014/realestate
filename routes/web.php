@@ -105,6 +105,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/smtp', [SMTPController::class, 'adminSMTPUpdate']);
 
+    Route::post('admin/smtpSend', [SMTPController::class, 'adminSMTPSend']);
+
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
     Route::post('admin/email/composePost', [EmailController::class, 'adminEmailComposePost']);
