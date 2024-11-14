@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Color;
+use App\Models\Orders;
+use App\Models\OrdersDetails;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -20,5 +22,23 @@ class OrderController extends Controller
         $data['getProduct'] = Product::get();
         $data['getColor'] = Color::get();
         return view('admin.order.add', $data);
+    }
+
+    public function adminStoreOrder(Request $request) {
+        // dd($request->all());
+        $save = new Orders;
+        $save->product_id = trim($request->product_id);
+        $save->product_quantity = trim($request->product_quantity);
+        $save->save();
+
+        if (!empty($request->color_id)) {
+            foreach($request->color_id as $color_id) {
+                $order = new OrdersDetails();
+                $order->orders_id = $save->id;
+                $order->color_id = $color_id;
+                $order->save();
+            }
+        }
+        return redirect('admin/order')->with('success', 'Order Created Successfully.');
     }
 }

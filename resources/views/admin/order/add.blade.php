@@ -37,6 +37,12 @@
                                 @endforeach
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">Enter Your Product Quantity <span style="color: red;"> *</span></label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="number" name="product_quantity" id="product_quantity">
+                            </div>
+                        </div>
                         <button type="submit" class="btn btn-primary me-1">Submit</button>
                         <a href="{{ url('admin/order') }}" class="btn btn-secondary ms-1">Back</a>
                     </form>
