@@ -5,6 +5,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\SMTPController;
@@ -119,6 +120,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::post('admin/color/edit/{id}', [ColorController::class, 'adminColorUpdate']);
     
     Route::get('admin/color/delete/{id}', [ColorController::class, 'adminColorDelete']);
+
+    Route::get('admin/order', [OrderController::class, 'adminOrderList']);
+
+    Route::get('admin/order/add', [OrderController::class, 'adminAddOrder']);
 
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
