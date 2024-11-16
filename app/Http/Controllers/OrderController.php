@@ -72,4 +72,13 @@ class OrderController extends Controller
         }
         return redirect('admin/order')->with('success', 'Order Updated Successfully.');
     }
+
+    public function adminOrderDelete($id) {
+        $save = Orders::find($id);
+        $save->delete();
+
+        OrdersDetails::where('orders_details.orders_id', '=', $id)->delete();
+
+        return redirect('admin/order')->with('success', 'Order Deleted Successfully.');
+    }
 }
