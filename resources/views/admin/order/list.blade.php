@@ -24,12 +24,27 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
+                                    <th>Product Name</th>
+                                    <th>Product Quantity</th>
+                                    <th>Product Color</th>
                                     <th>Created At</th>
-                                    <th>Action</th>
+                                    <th>Updated At</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                                @foreach ($getRecord as $value)
+                                <tr class="table-info text-dark">
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->title }}</td>
+                                    <td>{{ $value->product_quantity }}</td>
+                                    <td>
+                                        @foreach ($value->getColor as $colorValue) {{ $colorValue->name . ',' }} @endforeach
+                                    </td>
+                                    <td>{{ date('d-m-Y H:i:s', strtotime($value->created_at)) }}</td>
+                                    <td>{{ date('d-m-Y H:i:s', strtotime($value->updated_at)) }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                     <div style="padding: 20px; float: right;"></div>

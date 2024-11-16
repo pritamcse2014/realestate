@@ -13,7 +13,8 @@ class OrderController extends Controller
     public function adminOrderList() {
         // echo "Order List";
         // die();
-        return view('admin.order.list');
+        $data['getRecord'] = Orders::getDetails();
+        return view('admin.order.list', $data);
     }
 
     public function adminAddOrder() {
