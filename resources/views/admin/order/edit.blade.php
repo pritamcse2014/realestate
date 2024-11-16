@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Edit Order</h6>
 
-                    <form class="forms-sample" method="POST" action="{{ url('admin/order/edit') }}">
+                    <form class="forms-sample" method="POST" action="{{ url('admin/order/edit/' .$getRecord->id) }}">
                         {{ csrf_field() }}
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Product Name <span style="color: red;"> *</span></label>

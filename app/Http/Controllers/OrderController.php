@@ -52,4 +52,24 @@ class OrderController extends Controller
         // dd($data);
         return view('admin.order.edit', $data);
     }
+
+    public function adminOrderUpdate(Request $request, $id) {
+        // dd($request->all());
+        $save = Orders::find($id);
+        $save->product_id = trim($request->product_id);
+        $save->product_quantity = trim($request->product_quantity);
+        $save->save();
+
+        OrdersDetails::where('orders_id', '=', $save->id)->delete();
+
+        if (!empty($request->color_id)) {
+            foreach($request->color_id as $color_id) {
+                $order = new OrdersDetails();
+                $order->orders_id = $save->id;
+                $order->color_id = $color_id;
+                $order->save();
+            }
+        }
+        return redirect('admin/order')->with('success', 'Order Updated Successfully.');
+    }
 }

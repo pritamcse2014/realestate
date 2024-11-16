@@ -129,6 +129,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/order/edit/{id}', [OrderController::class, 'adminOrderEdit']);
 
+    Route::post('admin/order/edit/{id}', [OrderController::class, 'adminOrderUpdate']);
+
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
     Route::post('admin/email/composePost', [EmailController::class, 'adminEmailComposePost']);
