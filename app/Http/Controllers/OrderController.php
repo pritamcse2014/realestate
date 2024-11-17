@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function adminOrderList() {
+    public function adminOrderList(Request $request) {
         // echo "Order List";
         // die();
-        $data['getRecord'] = Orders::getDetails();
+        $data['getRecord'] = Orders::getDetails($request);
         return view('admin.order.list', $data);
     }
 
