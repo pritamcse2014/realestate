@@ -118,6 +118,15 @@ class AdminController extends Controller
         $save->role = trim($request->role);
         $save->status = trim($request->status);
         $save->remember_token = Str::random(50);
+
+        if (!empty($request->file('photo'))) {
+            $file = $request->file('photo');
+            $randomStr = Str::random(30);
+            $fileName = $randomStr .'.'. $file->getClientOriginalExtension();
+            $file->move('upload/', $fileName);
+            $save->photo = $fileName;
+        }
+
         $save->save();
 
         Mail::to($save->email)->send(new RegisteredMail($save));
