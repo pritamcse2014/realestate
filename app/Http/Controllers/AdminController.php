@@ -149,6 +149,18 @@ class AdminController extends Controller
         $save->phone = trim($request->phone);
         $save->role = trim($request->role);
         $save->status = trim($request->status);
+
+        if (!empty($request->file('photo'))) {
+            if (!empty($save->photo) && file_exists('upload/'.$save->photo)) {
+                unlink('upload/'.$save->photo);
+            }
+            $file = $request->file('photo');
+            $randomStr = Str::random(30);
+            $fileName = $randomStr .'.'. $file->getClientOriginalExtension();
+            $file->move('upload/', $fileName);
+            $save->photo = $fileName;
+        }
+
         $save->save();
 
         return redirect('admin/users')->with('success', 'User Updated Successfully.');

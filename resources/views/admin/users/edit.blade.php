@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Update User</h6>
 
-                    <form class="forms-sample" method="POST" action="{{ url('admin/users/edit/' .$getRecord->id) }}">
+                    <form class="forms-sample" method="POST" action="{{ url('admin/users/edit/' .$getRecord->id) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Name <span style="color: red;"> *</span></label>
@@ -32,6 +32,13 @@
                             <div class="col-sm-9">
                                 <input type="email" name="email" value="{{ $getRecord->email }}" class="form-control" autocomplete="off" placeholder="Enter Your Email" required readonly />
                                 <span style="color: red;">{{ $errors->first('email') }}</span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">Enter Your Photo</label>
+                            <div class="col-sm-9">
+                                <input type="file" name="photo" value="{{ $getRecord->photo }}" class="form-control" />
+                                <img class="wd-100 ht-100 rounded-circle mt-1" src="{{ $getRecord->getFile() }}" alt="Upload Photo" srcset="">
                             </div>
                         </div>
                         <div class="row mb-3">
