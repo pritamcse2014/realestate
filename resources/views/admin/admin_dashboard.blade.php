@@ -36,7 +36,9 @@
 
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" />
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tinymce@7.2.1/skins/ui/oxide/content.min.css" />
     </head>
     <body>
         <div class="main-wrapper">
@@ -77,9 +79,63 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.2.1/tinymce.min.js"></script>
+
         @yield('script')
         <script type="text/javascript">
-            
+            tinymce.init({
+                selector: ".editor",
+                height: "500px",
+                plugins: "link code image textcolor codesample",
+                codesample_languages: [
+                    {
+                        text: "HTML/XML",
+                        value: "markup",
+                    },
+                    {
+                        text: "JavaScript",
+                        value: "javascript",
+                    },
+                    {
+                        text: "CSS",
+                        value: "css",
+                    },
+                    {
+                        text: "PHP",
+                        value: "php",
+                    },
+                    {
+                        text: "Ruby",
+                        value: "ruby",
+                    },
+                    {
+                        text: "Python",
+                        value: "python",
+                    },
+                    {
+                        text: "Java",
+                        value: "java",
+                    },
+                    {
+                        text: "C",
+                        value: "c",
+                    },
+                    {
+                        text: "C#",
+                        value: "csharp",
+                    },
+                    {
+                        text: "C++",
+                        value: "cpp",
+                    },
+                ],
+
+                toolbar: ["fontselect | bullist numlist outdent indent | undo redo | fontsizeselect | styleselect | bold italic | link image", "codesample", "alignleft aligncenter alignright Justify | forecolor backcolor", "fullscreen"],
+
+                fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
+                font_formats: "Arial=arial,helvetica,sans-serif,;Courier New=courier new,courier,monospace;AkrutiKndPadmini=Akpdmi-n",
+                content_style: "body { color : white; }",
+            });
         </script>
     </body>
 </html>
