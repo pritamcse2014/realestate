@@ -18,13 +18,13 @@
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Enter Your Title <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <input type="text" name="title" class="form-control" placeholder="Enter Your Title" required />
+                                <input type="text" name="title" id="getTitle" class="form-control" placeholder="Enter Your Title" required />
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label">Enter Your Slug <span style="color: red;"> *</span></label>
+                            <label class="col-sm-3 col-form-label">Enter Your Slug <span style="color: red;"> *</span><a href="javascript:;" id="convertSlug"> Convert Slug </a></label>
                             <div class="col-sm-9">
-                                <input type="text" name="slug" class="form-control" placeholder="Enter Your Slug" required />
+                                <input type="text" name="slug" id="getSlug" class="form-control" placeholder="Enter Your Slug" required />
                             </div>
                         </div>
                         <div class="row mb-3">
