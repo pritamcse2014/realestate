@@ -29,6 +29,7 @@
                                     <th>Description</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,6 +41,26 @@
                                     <td>{!! $value->description !!}</td>
                                     <td>{{ date('d-m-Y H:s A', strtotime($value->created_at)) }}</td>
                                     <td>{{ date('d-m-Y H:s A', strtotime($value->updated_at)) }}</td>
+                                    <td>
+                                        <a class="dropdown-item d-flex align-items-center" href="{{ url('admin/blog/view/'.$value->id) }}">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="feather feather-eye icon-sm me-2"
+                                            >
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg>
+                                            <span class="">View</span>
+                                        </a>
+                                    </td>
                                 </tr>
                                 @empty
                                 <tr>
