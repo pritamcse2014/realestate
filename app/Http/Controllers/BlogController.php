@@ -10,7 +10,8 @@ class BlogController extends Controller
     public function adminBlogList() {
         // echo "Blog List";
         // die();
-        return view('admin.blog.list');
+        $data['getRecord'] = Blog::getDetails();
+        return view('admin.blog.list', $data);
     }
 
     public function adminAddBlog() {
