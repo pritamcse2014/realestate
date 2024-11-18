@@ -138,6 +138,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/blog/add', [BlogController::class, 'adminAddBlog']);
 
+    Route::post('admin/blog/add', [BlogController::class, 'adminStoreBlog']);
+
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
     Route::post('admin/email/composePost', [EmailController::class, 'adminEmailComposePost']);
