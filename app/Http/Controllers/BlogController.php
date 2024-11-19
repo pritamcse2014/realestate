@@ -41,4 +41,11 @@ class BlogController extends Controller
         $data['getRecord'] = Blog::find($id);
         return view('admin.blog.view', $data);
     }
+
+    public function adminBlogDelete($id) {
+        $save = Blog::find($id);
+        $save->delete();
+
+        return redirect('admin/blog')->with('success', 'Blog Deleted Successfully.');
+    }
 }

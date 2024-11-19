@@ -142,6 +142,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/blog/view/{id}', [BlogController::class, 'adminBlogView']);
 
+    Route::get('admin/blog/delete/{id}', [BlogController::class, 'adminBlogDelete']);
+
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
     Route::post('admin/email/composePost', [EmailController::class, 'adminEmailComposePost']);
