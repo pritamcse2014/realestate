@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Color;
+use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
 
 class ColorController extends Controller
@@ -47,5 +48,14 @@ class ColorController extends Controller
         $save->delete();
 
         return redirect('admin/color')->with('success', 'Color Deleted Successfully.');
+    }
+
+    public function adminPdf() {
+        $data = [
+            'title' => 'Welcome to PDF',
+            'date' => date('m-d-Y'),
+        ];
+        $pdf = PDF::loadView('pdf.pdf', $data);
+        return $pdf->download('errorsolutioncode.pdf');
     }
 }

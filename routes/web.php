@@ -122,6 +122,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     
     Route::get('admin/color/delete/{id}', [ColorController::class, 'adminColorDelete']);
 
+    Route::get('admin/pdf', [ColorController::class, 'adminPdf']);
+
     Route::get('admin/order', [OrderController::class, 'adminOrderList']);
 
     Route::get('admin/order/add', [OrderController::class, 'adminAddOrder']);
