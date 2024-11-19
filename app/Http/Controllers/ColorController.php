@@ -69,4 +69,15 @@ class ColorController extends Controller
         $pdf = PDF::loadView('pdf.pdfColor', $data);
         return $pdf->download('color.pdf');
     }
+
+    public function adminColorPdf($id) {
+        $getRecord = Color::find($id);
+        $data = [
+            'title' => 'Color PDF Download',
+            'date'  =>  date('d-m-Y'),
+            'getRecord' => $getRecord
+        ];
+        $pdf = PDF::loadView('pdf.colorPdf', $data);
+        return $pdf->download('color.pdf');
+    }
 }

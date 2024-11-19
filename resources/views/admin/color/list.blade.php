@@ -17,9 +17,9 @@
                         <h4 class="card-title">Color List</h4>
                         <div class="d-flex align-items-center">
                             <a class="btn btn-warning" href="{{ url('admin/pdfColor') }}">PDF Color</a>
-                            &nbsp;  &nbsp;  &nbsp;
+                            &nbsp; &nbsp; &nbsp;
                             <a class="btn btn-success" href="{{ url('admin/pdf') }}">PDF</a>
-                            &nbsp;  &nbsp;  &nbsp;
+                            &nbsp; &nbsp; &nbsp;
                             <a class="btn btn-primary" href="{{ url('admin/color/add') }}">Add Color</a>
                         </div>
                     </div>
@@ -58,6 +58,24 @@
                                                 <circle cx="12" cy="12" r="3"></circle>
                                             </svg>
                                             <span class="">Edit</span>
+                                        </a>
+                                        <a class="dropdown-item" href="{{ url('admin/color/pdf/' .$value->id) }}">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="feather feather-file-text icon-sm me-2"
+                                            >
+                                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2h12c1.1 0 1.99-.9 1.99-2V8l-6-6z"></path>
+                                                <path d="M14 2v6h6"></path>
+                                            </svg>
+                                            <span class="">PDF</span>
                                         </a>
                                         <a class="dropdown-item" href="{{ url('admin/color/delete/' .$value->id) }}" onclick="return confirm('Are you sure you want to delete?')">
                                             <svg
