@@ -13,6 +13,58 @@
         <div class="col-lg-12 stretch-card">
             <div class="card">
                 <div class="card-body">
+                    <h6 class="card-title">Search Blog</h6>
+                    <form method="GET" action="">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your ID</label>
+                                    <input class="form-control" type="text" name="id" id="id" value="{{ Request()->id }}" placeholder="Enter Your ID" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Blog Title</label>
+                                    <input class="form-control" type="text" name="title" id="title" value="{{ Request()->title }}" placeholder="Enter Your Blog Title" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Blog Slug</label>
+                                    <input class="form-control" type="text" name="slug" id="slug" value="{{ Request()->slug }}" placeholder="Enter Your Blog Slug" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Blog Description</label>
+                                    <input class="form-control" type="text" name="description" id="description" value="{{ Request()->description }}" placeholder="Enter Your Blog Description" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Created At</label>
+                                    <input class="form-control" type="date" name="created_at" id="created_at" value="{{ Request()->created_at }}" placeholder="Enter Your Created At" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Updated At</label>
+                                    <input class="form-control" type="date" name="updated_at" id="updated_at" value="{{ Request()->updated_at }}" placeholder="Enter Your Updated At" />
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary me-1" type="submit">Search</button>
+                        <a class="btn btn-danger ms-1" href="{{ url('admin/blog') }}">Reset</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-12 stretch-card">
+            <div class="card">
+                <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <h4 class="card-title">Blog List</h4>
                         <div class="d-flex align-items-center">
