@@ -124,6 +124,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/pdf', [ColorController::class, 'adminPdf']);
 
+    Route::get('admin/pdfColor', [ColorController::class, 'adminPdfColor']);
+
     Route::get('admin/order', [OrderController::class, 'adminOrderList']);
 
     Route::get('admin/order/add', [OrderController::class, 'adminAddOrder']);
