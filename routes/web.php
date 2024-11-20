@@ -103,6 +103,18 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/countries/delete/{id}', [CountryController::class, 'adminCountriesDelete']);
 
+    Route::get('admin/state', [CountryController::class, 'adminStateList']);
+
+    Route::get('admin/state/add', [CountryController::class, 'adminAddState']);
+
+    Route::post('admin/state/add', [CountryController::class, 'adminStoreState']);
+
+    Route::get('admin/state/edit/{id}', [CountryController::class, 'adminStateEdit']);
+    
+    Route::post('admin/state/edit/{id}', [CountryController::class, 'adminStateUpdate']);
+
+    Route::get('admin/state/delete/{id}', [CountryController::class, 'adminStateDelete']);
+
     Route::get('admin/notification', [NotificationController::class, 'adminNotificationUpdate']);
     
     Route::post('admin/notificationSend', [NotificationController::class, 'adminNotificationSend']);

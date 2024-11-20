@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Countries;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
@@ -47,5 +48,51 @@ class CountryController extends Controller
         $save->delete();
 
         return redirect('admin/countries')->with('success', 'Country Deleted Successfully.');
+    }
+
+    public function adminStateList() {
+        // echo "State List";
+        // die();
+        $data['getState'] = State::select('state.*', 'countries.country_name')->join('countries', 'countries.id', '=', 'state.countries_id')->get();
+        return view('admin.state.list', $data);
+    }
+
+    public function adminAddState() {
+        // echo "State Add";
+        // die();
+        $data['getCountries'] = Countries::get();
+        return view('admin.state.add', $data);
+    }
+
+    public function adminStoreState(Request $request) {
+        // dd($request->all());
+        $save = new State();
+        $save->countries_id = $request->countries_id;
+        $save->state_name = $request->state_name;
+        $save->save();
+
+        return redirect('admin/state')->with('success', 'State Create Successfully.');
+    }
+
+    public function adminStateEdit($id) {
+        $data['getCountries'] = Countries::get();
+        $data['getState'] = State::find($id);
+        return view('admin.state.edit', $data);
+    }
+
+    public function adminStateUpdate(Request $request, $id) {
+        $save = State::find($id);
+        $save->countries_id = $request->countries_id;
+        $save->state_name = $request->state_name;
+        $save->save();
+
+        return redirect('admin/state')->with('success', 'State Updated Successfully.');
+    }
+
+    public function adminStateDelete($id) {
+        $save = State::find($id);
+        $save->delete();
+
+        return redirect('admin/state')->with('success', 'State Deleted Successfully.');
     }
 }
