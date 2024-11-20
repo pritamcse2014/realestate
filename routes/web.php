@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ColorController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
@@ -89,6 +90,18 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::get('admin/schedule', [UserTimeController::class, 'adminScheduleList']);
 
     Route::post('admin/schedule', [UserTimeController::class, 'adminScheduleUpdate']);
+
+    Route::get('admin/countries', [CountryController::class, 'adminCountriesList']);
+
+    Route::get('admin/countries/add', [CountryController::class, 'adminAddCountries']);
+
+    Route::post('admin/countries/add', [CountryController::class, 'adminStoreCountries']);
+
+    Route::get('admin/countries/edit/{id}', [CountryController::class, 'adminCountriesEdit']);
+
+    Route::post('admin/countries/edit/{id}', [CountryController::class, 'adminCountriesUpdate']);
+
+    Route::get('admin/countries/delete/{id}', [CountryController::class, 'adminCountriesDelete']);
 
     Route::get('admin/notification', [NotificationController::class, 'adminNotificationUpdate']);
     
