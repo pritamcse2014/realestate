@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Countries;
 use App\Models\State;
 use Illuminate\Http\Request;
@@ -112,5 +113,16 @@ class CountryController extends Controller
     public function getStateRecord($countryId) {
         $state = State::where('countries_id', $countryId)->get();
         return response()->json($state);
+    }
+
+    public function adminStoreCity(Request $request) {
+        // dd($request->all());
+        $save = new City();
+        $save->countries_id = $request->countries_id;
+        $save->state_id = $request->state_id;
+        $save->city_name = trim($request->city_name);
+        $save->save();
+
+        return redirect('admin/city')->with('success', 'City Create Successfully.');
     }
 }
