@@ -95,4 +95,22 @@ class CountryController extends Controller
 
         return redirect('admin/state')->with('success', 'State Deleted Successfully.');
     }
+
+    public function adminCityList() {
+        // echo "City List";
+        // die();
+        return view('admin.city.list');
+    }
+
+    public function adminAddCity() {
+        // echo "City Add";
+        // die();
+        $data['getCountries'] = Countries::get();
+        return view('admin.city.add', $data);
+    }
+
+    public function getStateRecord($countryId) {
+        $state = State::where('countries_id', $countryId)->get();
+        return response()->json($state);
+    }
 }
