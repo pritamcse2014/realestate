@@ -48,6 +48,9 @@ class CountryController extends Controller
         $save = Countries::find($id);
         $save->delete();
 
+        State::where('state.countries_id', '=', $id)->delete();
+        City::where('city.countries_id', '=', $id)->delete();
+
         return redirect('admin/countries')->with('success', 'Country Deleted Successfully.');
     }
 
@@ -93,6 +96,8 @@ class CountryController extends Controller
     public function adminStateDelete($id) {
         $save = State::find($id);
         $save->delete();
+
+        City::where('city.state_id', '=', $id)->delete();
 
         return redirect('admin/state')->with('success', 'State Deleted Successfully.');
     }
@@ -143,5 +148,12 @@ class CountryController extends Controller
         $save->save();
 
         return redirect('admin/city')->with('success', 'City Updated Successfully.');
+    }
+
+    public function adminCityDelete($id) {
+        $save = City::find($id);
+        $save->delete();
+
+        return redirect('admin/city')->with('success', 'City Deleted Successfully.');
     }
 }

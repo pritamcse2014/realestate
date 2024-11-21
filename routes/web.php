@@ -127,6 +127,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::post('admin/city/edit/{id}', [CountryController::class, 'adminCityUpdate']);
 
+    Route::get('admin/city/delete/{id}', [CountryController::class, 'adminCityDelete']);
+
     Route::get('admin/notification', [NotificationController::class, 'adminNotificationUpdate']);
     
     Route::post('admin/notificationSend', [NotificationController::class, 'adminNotificationSend']);
