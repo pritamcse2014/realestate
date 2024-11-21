@@ -100,7 +100,8 @@ class CountryController extends Controller
     public function adminCityList() {
         // echo "City List";
         // die();
-        return view('admin.city.list');
+        $data['getRecord'] = City::getDetails();
+        return view('admin.city.list', $data);
     }
 
     public function adminAddCity() {
