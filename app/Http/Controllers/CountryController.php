@@ -126,4 +126,22 @@ class CountryController extends Controller
 
         return redirect('admin/city')->with('success', 'City Create Successfully.');
     }
+
+    public function adminCityEdit($id) {
+        $data['getCountries'] = Countries::get();
+        $data['getCity'] = City::find($id);
+        $data['getRecord'] = $data['getCity']->state_id;
+        $data['getState'] = State::where('state.id', '=', $data['getRecord'])->get();
+        return view('admin.city.edit', $data);
+    }
+
+    public function adminCityUpdate(Request $request, $id) {
+        $save = City::find($id);
+        $save->countries_id = $request->countries_id;
+        $save->state_id = $request->state_id;
+        $save->city_name = trim($request->city_name);
+        $save->save();
+
+        return redirect('admin/city')->with('success', 'City Updated Successfully.');
+    }
 }
