@@ -192,4 +192,22 @@ class CountryController extends Controller
 
         return redirect('admin/address')->with('success', 'Address Create Successfully.');
     }
+
+    public function adminAddressEdit($id) {
+        $data['getCountries'] = Countries::get();
+        $data['getAddress'] = Address::find($id);
+        $data['getState'] = State::where('id', '=', $data['getAddress']->state_id)->get();
+        $data['getCity'] = City::where('id', '=', $data['getAddress']->city_id)->get();
+        return view('admin.address.edit', $data);
+    }
+
+    public function adminAddressUpdate(Request $request, $id) {
+        $save = Address::find($id);
+        $save->countries_id = $request->countries_id;
+        $save->state_id = $request->state_id;
+        $save->city_id = $request->city_id;
+        $save->save();
+
+        return redirect('admin/address')->with('success', 'Address Updated Successfully.');
+    }
 }
