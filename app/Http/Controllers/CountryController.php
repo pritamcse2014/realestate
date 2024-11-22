@@ -161,7 +161,8 @@ class CountryController extends Controller
     public function adminAddressList() {
         // echo "Address List";
         // die();
-        return view('admin.address.list');
+        $data['getRecord'] = Address::getDetails();
+        return view('admin.address.list', $data);
     }
 
     public function adminAddAddress() {

@@ -24,16 +24,35 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
+                                    <th>Country Name</th>
+                                    <th>State Name</th>
+                                    <th>City Name</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                                @forelse ($getRecord as $value)
+                                <tr>
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->country_name }}</td>
+                                    <td>{{ $value->state_name }}</td>
+                                    <td>{{ $value->city_name }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($value->updated_at)) }}</td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td>Record Not Found....</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
                         </table>
                     </div>
-                    <div style="padding: 20px; float: right;"></div>
+                    <div style="padding: 20px; float: right;">
+                        {!! $getRecord->appends(Request::except('page'))->links() !!}
+                    </div>
                 </div>
             </div>
         </div>
