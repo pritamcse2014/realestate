@@ -18,7 +18,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Select Your Country <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="" id="countries_id">
+                                <select class="form-control" name="countries_id" id="countries_id" required>
                                     <option value="">Select Country</option>
                                     @foreach ($getCountries as $value)
                                     <option value="{{ $value->id }}">{{ $value->country_name }}</option>
@@ -29,7 +29,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Select Your State <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="" id="state_id">
+                                <select class="form-control" name="state_id" id="state_id" required>
                                     <option value="">Select State</option>
                                 </select>
                             </div>
@@ -37,7 +37,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Select Your City <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="" id="city_id">
+                                <select class="form-control" name="city_id" id="city_id" required>
                                     <option value="">Select City</option>
                                 </select>
                             </div>

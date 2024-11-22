@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\City;
 use App\Models\Countries;
 use App\Models\State;
@@ -178,5 +179,16 @@ class CountryController extends Controller
     public function getCity($stateId) {
         $city = City::where('state_id', $stateId)->get();
         return response()->json($city);
+    }
+
+    public function adminStoreAddress(Request $request) {
+        // dd($request->all());
+        $save = new Address();
+        $save->countries_id = $request->countries_id;
+        $save->state_id = $request->state_id;
+        $save->city_id = $request->city_id;
+        $save->save();
+
+        return redirect('admin/address')->with('success', 'Address Create Successfully.');
     }
 }
