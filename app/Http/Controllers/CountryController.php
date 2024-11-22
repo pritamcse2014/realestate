@@ -156,4 +156,16 @@ class CountryController extends Controller
 
         return redirect('admin/city')->with('success', 'City Deleted Successfully.');
     }
+
+    public function adminAddressList() {
+        // echo "Address List";
+        // die();
+        return view('admin.address.list');
+    }
+
+    public function adminAddAddress() {
+        // echo "Address Add";
+        // die();
+        return view('admin.address.add');
+    }
 }
