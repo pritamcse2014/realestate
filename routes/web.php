@@ -133,6 +133,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/address/add', [CountryController::class, 'adminAddAddress']);
 
+    Route::get('get-state/{countryId}', [CountryController::class, 'getState']);
+
+    Route::get('get-city/{stateId}', [CountryController::class, 'getCity']);
+
     Route::get('admin/notification', [NotificationController::class, 'adminNotificationUpdate']);
     
     Route::post('admin/notificationSend', [NotificationController::class, 'adminNotificationSend']);

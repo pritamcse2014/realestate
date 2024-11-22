@@ -18,30 +18,27 @@
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Select Your Country <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="" id="">
+                                <select class="form-control" name="" id="countries_id">
                                     <option value="">Select Country</option>
-                                    <option value="">USA</option>
-                                    <option value="">UK</option>
+                                    @foreach ($getCountries as $value)
+                                    <option value="{{ $value->id }}">{{ $value->country_name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Select Your State <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="" id="">
+                                <select class="form-control" name="" id="state_id">
                                     <option value="">Select State</option>
-                                    <option value="">Main Street</option>
-                                    <option value="">Oxford Street</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Select Your City <span style="color: red;"> *</span></label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="" id="">
+                                <select class="form-control" name="" id="city_id">
                                     <option value="">Select City</option>
-                                    <option value="">Dhaka</option>
-                                    <option value="">Jessore</option>
                                 </select>
                             </div>
                         </div>

@@ -166,6 +166,17 @@ class CountryController extends Controller
     public function adminAddAddress() {
         // echo "Address Add";
         // die();
-        return view('admin.address.add');
+        $data['getCountries'] = Countries::get();
+        return view('admin.address.add', $data);
+    }
+
+    public function getState($countryId) {
+        $state = State::where('countries_id', $countryId)->get();
+        return response()->json($state);
+    }
+    
+    public function getCity($stateId) {
+        $city = City::where('state_id', $stateId)->get();
+        return response()->json($city);
     }
 }

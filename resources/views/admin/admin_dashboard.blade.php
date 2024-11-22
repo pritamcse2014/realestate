@@ -169,5 +169,42 @@
                 });
             });
         </script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#countries_id").on("change", function () {
+                    var countryId = this.value;
+                    // alert(countryId);
+                    // $('#state_id').html('');
+                    $("#city_id").html('<option value="">Select City</option>');
+                    var url = "{{ url('get-state/') }}" + "/" + countryId;
+                    $.ajax({
+                        url: url,
+                        type: "GET",
+                        success: function (data) {
+                            $("#state_id").html('<option value="">Select State</option>');
+                            $.each(data, function (key, value) {
+                                $("#state_id").append('<option value="' + value.id + '">' + value.state_name + "</option>");
+                            });
+                        },
+                    });
+                });
+                $("#state_id").on("change", function () {
+                    var stateId = this.value;
+                    $("#city_id").html("");
+                    var url = "{{ url('get-city/') }}" + "/" + stateId;
+                    $.ajax({
+                        url: url,
+                        type: "GET",
+                        success: function (data) {
+                            $("#city_id").html('<option value="">Select City</option>');
+                            $.each(data, function (key, value) {
+                                $("#city_id").append('<option value="' + value.id + '">' + value.city_name + "</option>");
+                            });
+                        },
+                    });
+                });
+            });
+        </script>
     </body>
 </html>
