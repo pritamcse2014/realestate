@@ -210,4 +210,11 @@ class CountryController extends Controller
 
         return redirect('admin/address')->with('success', 'Address Updated Successfully.');
     }
+
+    public function adminAddressDelete($id) {
+        $save = Address::find($id);
+        $save->delete();
+
+        return redirect('admin/address')->with('success', 'Address Deleted Successfully.');
+    }
 }
