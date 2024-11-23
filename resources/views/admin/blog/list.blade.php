@@ -68,6 +68,8 @@
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <h4 class="card-title">Blog List</h4>
                         <div class="d-flex align-items-center">
+                            <a onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" href="{{ url('admin/blog/truncate') }}">All Blog Delete</a>
+                            &nbsp; &nbsp; &nbsp;
                             <a class="btn btn-primary" href="{{ url('admin/blog/add') }}">Add Blog</a>
                         </div>
                     </div>

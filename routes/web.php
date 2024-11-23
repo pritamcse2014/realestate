@@ -210,6 +210,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/blog/delete/{id}', [BlogController::class, 'adminBlogDelete']);
 
+    Route::get('admin/blog/truncate', [BlogController::class, 'adminBlogTruncate']);
+
     Route::get('admin/sendPdf', [SendPdfController::class, 'adminSendPdf']);
 
     Route::post('admin/sendPdfEmail', [SendPdfController::class, 'adminSendPdfEmail']);

@@ -69,4 +69,11 @@ class BlogController extends Controller
 
         return redirect('admin/blog')->with('success', 'Blog Deleted Successfully.');
     }
+
+    public function adminBlogTruncate() {
+        // echo "Truncate";
+        // die();
+        Blog::truncate();
+        return redirect()->back()->with('success', 'All Blog Deleted Successfully.');
+    }
 }
