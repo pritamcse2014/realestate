@@ -11,7 +11,7 @@ class ColorController extends Controller
     public function adminColorList() {
         // echo "Color";
         // die();
-        $data['getRecord'] = Color::get();
+        $data['getRecord'] = Color::getDetails();
         return view('admin.color.list', $data);
     }
 
