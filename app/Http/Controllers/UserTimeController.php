@@ -55,7 +55,7 @@ class UserTimeController extends Controller
     public function adminTimeList() {
         // echo "Week Time";
         // die();
-        $data['getRecord'] = Time::get();
+        $data['getRecord'] = Time::getDetails();
         return view('admin.time.list', $data);
     }
 
