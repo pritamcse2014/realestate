@@ -1,5 +1,47 @@
-@extends('admin.admin_dashboard')
-@section('admin')
+@extends('admin.admin_dashboard') @section('style')
+<style type="text/css">
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 24px;
+    }
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        /* display: none; */
+    }
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 24px;
+    }
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+    }
+    input:checked + .slider {
+        background-color: #2196f3;
+    }
+    input:checked + .slider:before {
+        transform: translateX(26px);
+    }
+</style>
+@endsection @section('admin')
 <div class="page-content">
     @include('_message')
 
@@ -69,6 +111,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
+                                    <th>Status</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
@@ -79,6 +122,12 @@
                                 <tr class="table-info text-dark">
                                     <td>{{ $value->id }}</td>
                                     <td>{{ $value->name }}</td>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" class="statusCheckbox" data-id="{{ $value->id }}" {{ $value->status ? 'checked' : '' }}>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </td>
                                     <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
                                     <td>
                                         <a class="dropdown-item" href="{{ url('admin/color/edit/' .$value->id) }}">

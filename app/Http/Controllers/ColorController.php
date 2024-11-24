@@ -80,4 +80,15 @@ class ColorController extends Controller
         $pdf = PDF::loadView('pdf.colorPdf', $data);
         return $pdf->download('color.pdf');
     }
+
+    public function adminColorChangeStatus(Request $request) {
+        $getRecord = Color::find($request->id);
+        if ($getRecord) {
+            $getRecord->status = $request->status;
+            $getRecord->save();
+            return response()->json(['message', 'Status Updated Successfully.']);
+        } else {
+            return response()->json(['message', 'Status Updated Failed.']);
+        }
+    }
 }

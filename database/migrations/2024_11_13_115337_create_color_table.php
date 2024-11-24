@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('color', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255)->nullable();
+            $table->tinyInteger('status')->default(0)->length(4);
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
         });
