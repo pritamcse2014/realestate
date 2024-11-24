@@ -244,6 +244,8 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
     Route::get('agent/transactions/add', [TransactionsController::class, 'agentAddTransactions']);
 
     Route::post('agent/transactions/add', [TransactionsController::class, 'agentStoreTransactions']);
+
+    Route::get('agent/transactions', [TransactionsController::class, 'agentTransactionsList']);
 });
 
 Route::get('setNewPassword/{token}', [AdminController::class, 'setNewPassword']);

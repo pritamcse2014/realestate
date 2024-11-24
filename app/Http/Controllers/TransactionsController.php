@@ -50,4 +50,11 @@ class TransactionsController extends Controller
 
         return redirect()->back()->with('success', 'Transaction Create Successfully.');
     }
+
+    public function agentTransactionsList() {
+        // echo "Transactions List";
+        // die();
+        $data['getRecord'] = Transactions::getDetails(Auth::user()->id);
+        return view('agent.transactions.list', $data);
+    }
 }
