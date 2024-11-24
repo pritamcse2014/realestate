@@ -13,6 +13,74 @@
         <div class="col-lg-12 stretch-card">
             <div class="card">
                 <div class="card-body">
+                    <h6 class="card-title">Search Transactions</h6>
+                    <form method="GET" action="">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your ID</label>
+                                    <input class="form-control" type="text" name="id" id="id" value="{{ Request()->id }}" placeholder="Enter Your ID" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your User Name</label>
+                                    <input class="form-control" type="text" name="user_id" id="user_id" value="{{ Request()->user_id }}" placeholder="Enter Your User Name" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Order Number</label>
+                                    <input class="form-control" type="text" name="order_number" id="order_number" value="{{ Request()->order_number }}" placeholder="Enter Your Order Number" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Transaction ID</label>
+                                    <input class="form-control" type="text" name="transaction_id" id="transaction_id" value="{{ Request()->transaction_id }}" placeholder="Enter Your Transaction ID" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Amount</label>
+                                    <input class="form-control" type="number" name="amount" id="amount" value="{{ Request()->amount }}" placeholder="Enter Your Amount" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Select Your Payment Status</label>
+                                    <select class="form-control" name="is_payment" id="">
+                                        <option value="">Select Payment Status</option>
+                                        <option {{ (Request()->is_payment == '0') ? 'selected' : '' }} value="0">Pending</option>
+                                        <option {{ (Request()->is_payment == '1') ? 'selected' : '' }} value="1">Completed</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Created At</label>
+                                    <input class="form-control" type="date" name="created_at" id="created_at" value="{{ Request()->created_at }}" placeholder="Enter Your Created At" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Updated At</label>
+                                    <input class="form-control" type="date" name="updated_at" id="updated_at" value="{{ Request()->updated_at }}" placeholder="Enter Your Updated At" />
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary me-1" type="submit">Search</button>
+                        <a class="btn btn-danger ms-1" href="{{ url('admin/transactions') }}">Reset</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-12 stretch-card">
+            <div class="card">
+                <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <h4 class="card-title">Transactions List</h4>
                         <div class="d-flex align-items-center"></div>
