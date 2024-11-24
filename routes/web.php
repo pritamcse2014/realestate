@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\SendPdfController;
 use App\Http\Controllers\SMTPController;
+use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\UserTimeController;
 use Illuminate\Support\Facades\Route;
 
@@ -217,6 +218,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::get('admin/sendPdf', [SendPdfController::class, 'adminSendPdf']);
 
     Route::post('admin/sendPdfEmail', [SendPdfController::class, 'adminSendPdfEmail']);
+
+    Route::get('admin/transactions', [TransactionsController::class, 'adminTransactionsList']);
 
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
