@@ -46,9 +46,9 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a href="pages/apps/calendar.html" class="nav-link">
-                    <i class="link-icon" data-feather="calendar"></i>
-                    <span class="link-title">Calendar</span>
+                <a href="{{ url('agent/transactions/add') }}" class="nav-link">
+                    <i class="link-icon" data-feather="dollar-sign"></i>
+                    <span class="link-title">Transactions</span>
                 </a>
             </li>
             <li class="nav-item nav-category">Components</li>

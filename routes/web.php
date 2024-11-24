@@ -240,6 +240,10 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
     Route::get('agent/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
     
     Route::get('agent/email/inbox', [AdminController::class, 'AgentEmailInbox']);
+
+    Route::get('agent/transactions/add', [TransactionsController::class, 'agentAddTransactions']);
+
+    Route::post('agent/transactions/add', [TransactionsController::class, 'agentStoreTransactions']);
 });
 
 Route::get('setNewPassword/{token}', [AdminController::class, 'setNewPassword']);

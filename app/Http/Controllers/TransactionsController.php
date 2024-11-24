@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transactions;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionsController extends Controller
 {
@@ -31,5 +32,22 @@ class TransactionsController extends Controller
         $user = $user->get();
         $data['getRecord'] = $user;
         return view('admin.transactions.list', $data);
+    }
+
+    public function agentAddTransactions() {
+        return view('agent.transactions.add');
+    }
+
+    public function agentStoreTransactions(Request $request) {
+        // dd($request->all());
+        $save = new Transactions();
+        $save->user_id = Auth::user()->id;
+        $save->order_number = trim($request->order_number);
+        $save->transaction_id = trim($request->transaction_id);
+        $save->amount = trim($request->amount);
+        $save->is_payment = trim($request->is_payment);
+        $save->save();
+
+        return redirect()->back()->with('success', 'Transaction Create Successfully.');
     }
 }
