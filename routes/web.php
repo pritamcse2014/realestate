@@ -64,6 +64,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/users/change-status', [AdminController::class, 'adminUserChangeStatus']);
 
+    Route::get('admin/users/typeahead-autocomplete', [AdminController::class, 'adminUsersTypeaheadAutocomplete']);
+
     Route::post('checkemail', [AdminController::class, 'checkEmail']);
 
     Route::get('admin/week', [UserTimeController::class, 'adminWeekList']);

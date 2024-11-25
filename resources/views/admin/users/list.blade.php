@@ -108,6 +108,8 @@
         </div>
     </div>
     <br />
+    <input class="form-control" type="text" name="user_name" id="user_name" placeholder="Enter Your User Name" />
+    <br />
     <div class="row">
         <div class="col-lg-12 stretch-card">
             <div class="card">

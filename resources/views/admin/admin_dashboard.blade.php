@@ -92,6 +92,8 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+
         @yield('script')
         <script type="text/javascript">
             tinymce.init({
@@ -344,6 +346,17 @@
                         }
                     }
                 });
+            });
+        </script>
+
+        <script type="text/javascript">
+            var path = "{{ url('admin/users/typeahead-autocomplete') }}";
+            $("#user_name").typeahead({
+                source: function (query, process) {
+                    return $.get(path, { query: query }, function (data) {
+                        return process(data);
+                    });
+                },
             });
         </script>
     </body>

@@ -191,6 +191,15 @@ class AdminController extends Controller
         echo json_encode($json);
     }
 
+    public function adminUsersTypeaheadAutocomplete(Request $request) {
+        $data = $request->all();
+        $query = $data['query'];
+        $dataFilter = User::select('name')
+                    ->where('name', 'LIKE', '%' . $query . '%')
+                    ->get();
+        return response()->json($dataFilter);
+    }
+
     public function checkEmail(Request $request) {
         $email = $request->input('email');
         $isExists = User::where('email', '=', $email)->first();
