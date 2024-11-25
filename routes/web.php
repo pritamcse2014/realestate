@@ -220,6 +220,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::post('admin/sendPdfEmail', [SendPdfController::class, 'adminSendPdfEmail']);
 
     Route::get('admin/transactions', [TransactionsController::class, 'adminTransactionsList']);
+
+    Route::get('admin/transactions/edit/{id}', [TransactionsController::class, 'adminTransactionsEdit']);
+
+    Route::post('admin/transactions/edit/{id}', [TransactionsController::class, 'adminTransactionsUpdate']);
     
     Route::get('admin/transactions/delete/{id}', [TransactionsController::class, 'adminTransactionsDelete']);
 

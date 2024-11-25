@@ -34,6 +34,22 @@ class TransactionsController extends Controller
         return view('admin.transactions.list', $data);
     }
 
+    public function adminTransactionsEdit($id) {
+        $data['getRecord'] = Transactions::find($id);
+        return view('admin.transactions.edit', $data);
+    }
+
+    public function adminTransactionsUpdate(Request $request, $id) {
+        $save = Transactions::find($id);
+        $save->order_number = trim($request->order_number);
+        $save->transaction_id = trim($request->transaction_id);
+        $save->amount = trim($request->amount);
+        $save->	is_payment = trim($request->is_payment);
+        $save->save();
+
+        return redirect('admin/transactions')->with('success', 'Transaction Updated Successfully.');
+    }
+
     public function adminTransactionsDelete($id) {
         $save = Transactions::find($id);
         $save->is_delete = 1;
