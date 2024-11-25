@@ -29,9 +29,17 @@ class TransactionsController extends Controller
         } if (!empty($request->updated_at)) {
             $user = $user->where('transactions.updated_at', 'like', '%' . $request->updated_at . '%');
         }
-        $user = $user->get();
+        $user = $user->where('transactions.is_delete', '=', '0')->get();
         $data['getRecord'] = $user;
         return view('admin.transactions.list', $data);
+    }
+
+    public function adminTransactionsDelete($id) {
+        $save = Transactions::find($id);
+        $save->is_delete = 1;
+        $save->save();
+
+        return redirect()->back()->with('success', 'Transaction Soft Delete Successfully.');
     }
 
     public function agentAddTransactions() {

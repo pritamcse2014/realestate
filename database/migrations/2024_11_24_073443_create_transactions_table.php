@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('transaction_id', 255)->nullable();
             $table->string('amount', 255)->nullable();
             $table->tinyInteger('is_payment')->default(0)->comment('0:Pending, 1:Completed');
+            $table->tinyInteger('is_delete')->default(0);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });
