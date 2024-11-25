@@ -54,6 +54,12 @@
                     <span class="link-title">Transactions</span>
                 </a>
             </li>
+            <li class="nav-item @if(Request::segment(2) === 'calendar') active @endif">
+                <a href="{{ url('admin/calendar') }}" class="nav-link">
+                    <i class="link-icon" data-feather="calendar"></i>
+                    <span class="link-title">Calendar</span>
+                </a>
+            </li>
             <li class="nav-item nav-category">User Week</li>
             <li class="nav-item @if(Request::segment(2) === 'week') active @endif">
                 <a href="{{ url('admin/week') }}" class="nav-link">
