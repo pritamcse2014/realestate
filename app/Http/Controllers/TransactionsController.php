@@ -81,4 +81,9 @@ class TransactionsController extends Controller
         $data['getRecord'] = Transactions::getDetails(Auth::user()->id);
         return view('agent.transactions.list', $data);
     }
+
+    public function agentTransactionsDelete($id) {
+        Transactions::find($id)->delete();
+        return redirect()->back()->with('success', 'Transaction Deleted Successfully.');
+    }
 }

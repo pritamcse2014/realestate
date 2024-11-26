@@ -29,6 +29,7 @@
                                     <th>Payment Status</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,6 +49,12 @@
                                     </td>
                                     <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
                                     <td>{{ date('d-m-Y', strtotime($value->updated_at)) }}</td>
+                                    <td>
+                                        <form action="{{ route('transactions.delete', $value->id) }}" method="post">
+                                            @csrf @method('DELETE')
+                                            <button class="btn btn-danger btn-sm btn-delete" type="submit">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach @if (!empty($totalPrice))
                                 <tr>

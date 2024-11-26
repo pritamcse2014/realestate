@@ -259,6 +259,8 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
     Route::post('agent/transactions/add', [TransactionsController::class, 'agentStoreTransactions']);
 
     Route::get('agent/transactions', [TransactionsController::class, 'agentTransactionsList']);
+
+    Route::delete('agent/transactions/delete/{id}', [TransactionsController::class, 'agentTransactionsDelete'])->name('transactions.delete');
 });
 
 Route::get('setNewPassword/{token}', [AdminController::class, 'setNewPassword']);

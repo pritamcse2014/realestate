@@ -73,9 +73,27 @@
         <script src="{{ asset('assets/js/dashboard-dark.js') }}"></script>
         <!-- End custom js for this page -->
 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         @yield('script')
         <script type="text/javascript">
-            
+            $(".btn-delete").click(function (event) {
+                event.preventDefault();
+                var form = $(this).parents("form");
+                Swal.fire({
+                    title: "Are You Sure?",
+                    text: "You want to delete.",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ok",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
         </script>
     </body>
 </html>
