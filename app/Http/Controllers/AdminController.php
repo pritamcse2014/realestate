@@ -210,6 +210,27 @@ class AdminController extends Controller
         }
     }
 
+    public function adminChangePassword() {
+        return view('admin.password.update');
+    }
+
+    public function adminChangePasswordUpdate(Request $request) {
+        // dd($request->all());
+        $user = User::find(Auth::user()->id);
+        if (trim($request->new_password) == trim($request->confirm_password)) {
+            if (Hash::check($request->old_password, $user->password)) {
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+
+                return redirect()->back()->with('success', 'Password Updated Successfully.');
+            } else {
+                return redirect()->back()->with('error', 'Password Updated Failed.');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Password Updated Failed.');
+        }
+    }
+
     public function adminEditProfile() {
         // echo "Edit";
         // die();

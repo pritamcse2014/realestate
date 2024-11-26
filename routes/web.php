@@ -68,6 +68,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::post('checkemail', [AdminController::class, 'checkEmail']);
 
+    Route::get('admin/changePassword', [AdminController::class, 'adminChangePassword']);
+
+    Route::post('admin/changePassword/update', [AdminController::class, 'adminChangePasswordUpdate']);
+
     Route::get('admin/week', [UserTimeController::class, 'adminWeekList']);
 
     Route::get('admin/week/add', [UserTimeController::class, 'adminAddWeek']);
