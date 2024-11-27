@@ -246,8 +246,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::post('admin/discountCode/add', [DiscountCodeController::class, 'adminStoreDiscountCode']);
 
     Route::get('admin/discountCode/edit/{id}', [DiscountCodeController::class, 'adminDiscountCodeEdit']);
-    
+
     Route::post('admin/discountCode/edit/{id}', [DiscountCodeController::class, 'adminDiscountCodeUpdate']);
+
+    Route::get('admin/discountCode/delete/{id}', [DiscountCodeController::class, 'adminDiscountCodeDelete']);
 
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 

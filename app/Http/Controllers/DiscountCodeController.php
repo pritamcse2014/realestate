@@ -52,4 +52,12 @@ class DiscountCodeController extends Controller
         $save->save();
         return redirect('admin/discountCode')->with('success', 'Discount Code Updated Successfully.');
     }
+
+    public function adminDiscountCodeDelete($id) {
+        $save = DiscountCode::find($id);
+        $save->is_delete = 1;
+        $save->save();
+
+        return redirect('admin/discountCode')->with('success', 'Discount Code Deleted Successfully.');
+    }
 }

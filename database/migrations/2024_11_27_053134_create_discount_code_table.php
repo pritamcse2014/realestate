@@ -23,6 +23,7 @@ return new class extends Migration
             $table->tinyInteger('usages')
                 ->default(1)
                 ->comment('1: Unlimited, 2: One Time');
+            $table->tinyInteger('is_delete')->default(0);
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
         });
