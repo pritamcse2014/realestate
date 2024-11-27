@@ -6,6 +6,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\DiscountCodeController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
@@ -237,6 +238,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::get('admin/calendar', [CalendarController::class, 'adminCalendarList']);
 
     Route::post('admin/calendar/action', [CalendarController::class, 'adminCalendarAction']);
+
+    Route::get('admin/discountCode', [DiscountCodeController::class, 'adminDiscountCodeList']);
+
+    Route::get('admin/discountCode/add', [DiscountCodeController::class, 'adminAddDiscountCode']);
 
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
