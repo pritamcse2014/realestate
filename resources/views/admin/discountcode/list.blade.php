@@ -34,17 +34,22 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($getRecord as $value)
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->discount_code }}</td>
+                                    <td>{{ $value->discount_price }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($value->expiry_date)) }}</td>
+                                    <td>
+                                        @if ($value->type == 0) Percentage @else Amount @endif
+                                    </td>
+                                    <td>
+                                        @if ($value->usages == 1) Unlimited @else One Time @endif
+                                    </td>
+                                    <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($value->updated_at)) }}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
