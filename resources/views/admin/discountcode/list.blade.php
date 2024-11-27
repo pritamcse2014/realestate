@@ -23,6 +23,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>User Name</th>
                                     <th>Discount Code</th>
                                     <th>Discount Price</th>
                                     <th>Expiry Date</th>
@@ -37,6 +38,7 @@
                                 @foreach ($getRecord as $value)
                                 <tr>
                                     <td>{{ $value->id }}</td>
+                                    <td>{{ $value->name }}</td>
                                     <td>{{ $value->discount_code }}</td>
                                     <td>{{ $value->discount_price }}</td>
                                     <td>{{ date('d-m-Y', strtotime($value->expiry_date)) }}</td>
@@ -53,7 +55,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <div style="padding: 20px; float: right;"></div>
+                    <div style="padding: 20px; float: right;">
+                        {!! $getRecord->appends(Request::except('page'))->links() !!}
+                    </div>
                 </div>
             </div>
         </div>

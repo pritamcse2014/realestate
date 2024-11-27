@@ -11,7 +11,7 @@ class DiscountCodeController extends Controller
     public function adminDiscountCodeList() {
         // echo "Discount Code List";
         // die();
-        $data['getRecord'] = DiscountCode::get();
+        $data['getRecord'] = DiscountCode::getDetails();
         return view('admin.discountcode.list', $data);
     }
 

@@ -10,4 +10,11 @@ class DiscountCode extends Model
     use HasFactory;
     
     protected $table = 'discount_code';
+
+    static public function getDetails() {
+        $return = self::select('discount_code.*', 'users.name')
+                ->join('users', 'users.id', '=', 'discount_code.user_id');
+        $return = $return->orderBy('discount_code.id', 'desc')->paginate(10);
+        return $return;
+    }
 }
