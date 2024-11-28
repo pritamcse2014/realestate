@@ -23,4 +23,13 @@ class SupportController extends Controller
         $data['getUser'] = $getSupport;
         return view('admin.support.reply', $data);
     }
+
+    public function adminChangeSupportStatus(Request $request) {
+        $getSupport = Support::find($request->id);
+        $getSupport->status = $request->status;
+        $getSupport->save();
+
+        $json['success'] = true;
+        echo json_encode($json);
+    }
 }

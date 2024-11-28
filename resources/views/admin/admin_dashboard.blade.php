@@ -359,5 +359,24 @@
                 },
             });
         </script>
+
+        <script type="text/javascript">
+            $(".changeSupportStatus").change(function () {
+                var id = $(this).attr("id");
+                var status = $(this).val();
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('admin/changeSupportStatus') }}",
+                    data: {
+                        id: id,
+                        status: status,
+                    },
+                    dataType: "JSON",
+                    success: function (data) {
+                        alert("Status Successfully Changed.");
+                    },
+                });
+            });
+        </script>
     </body>
 </html>

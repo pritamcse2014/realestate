@@ -100,7 +100,14 @@
                                     <td>{{ $value->title }}</td>
                                     <td>{{ $value->description }}</td>
                                     <td>
-                                        @if ($value->status == 0) Open @else Closed @endif
+                                        @if (Auth::user()->role == 'admin')
+                                            <select class="form-control changeSupportStatus" id="{{ $value->id }}" style="width: 80px;">
+                                                <option <?= ($value->status == '0') ? 'selected' : '0' ?> value="0">Open</option>
+                                                <option <?= ($value->status == '1') ? 'selected' : '1' ?> value="1">Close</option>
+                                            </select>
+                                        @else
+                                            {{ ($value->status == '1') ? 'Closed' : 'Open' }}
+                                        @endif
                                     </td>
                                     <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                     <td>{{ date('d-m-Y H:i A', strtotime($value->updated_at)) }}</td>

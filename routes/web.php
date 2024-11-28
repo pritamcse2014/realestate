@@ -256,6 +256,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/support/reply/{id}', [SupportController::class, 'adminSupportReply']);
 
+    Route::get('admin/changeSupportStatus', [SupportController::class, 'adminChangeSupportStatus']);
+
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
     Route::post('admin/email/composePost', [EmailController::class, 'adminEmailComposePost']);
