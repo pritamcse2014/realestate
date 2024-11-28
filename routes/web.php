@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\SendPdfController;
 use App\Http\Controllers\SMTPController;
+use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\UserTimeController;
 use Illuminate\Support\Facades\Route;
@@ -250,6 +251,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::post('admin/discountCode/edit/{id}', [DiscountCodeController::class, 'adminDiscountCodeUpdate']);
 
     Route::get('admin/discountCode/delete/{id}', [DiscountCodeController::class, 'adminDiscountCodeDelete']);
+
+    Route::get('admin/support', [SupportController::class, 'adminSupportList']);
 
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
