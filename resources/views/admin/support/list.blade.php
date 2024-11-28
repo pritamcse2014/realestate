@@ -89,6 +89,7 @@
                                     <th>Status</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -103,6 +104,7 @@
                                     </td>
                                     <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                     <td>{{ date('d-m-Y H:i A', strtotime($value->updated_at)) }}</td>
+                                    <td><a class="btn btn-primary" href="{{ url('admin/support/reply/' .$value->id) }}">Reply</a></td>
                                 </tr>
                                 @empty
                                 <tr>

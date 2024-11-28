@@ -16,4 +16,8 @@ class SupportController extends Controller
         $data['getUser'] = User::get();
         return view('admin.support.list', $data);
     }
+
+    public function adminSupportReply($id) {
+        return view('admin.support.reply');
+    }
 }
