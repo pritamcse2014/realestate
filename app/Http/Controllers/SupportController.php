@@ -18,6 +18,9 @@ class SupportController extends Controller
     }
 
     public function adminSupportReply($id) {
-        return view('admin.support.reply');
+        $getSupport = Support::where('id', '=', $id);
+        $getSupport = $getSupport->first();
+        $data['getUser'] = $getSupport;
+        return view('admin.support.reply', $data);
     }
 }

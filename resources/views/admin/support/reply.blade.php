@@ -17,34 +17,38 @@
                             <div class="item in">
                                 <div class="text">
                                     <div class="heading">
-                                        <a href="#">Hi</a>
-                                        <span class="date">15-12-2024</span>
+                                        <a href="#">{{ !empty($getUser->user->name) ? $getUser->user->name : '' }}</a>
+                                        <span class="date">{{ date('d-m-Y', strtotime($getUser->created_at)) }}</span>
                                     </div>
-                                    <b>Title : </b> Title
+                                    <b>Title : </b> {{ $getUser->title }}
                                     <br />
-                                    <b>Description : </b> Welcome
+                                    <b>Description : </b> {{ $getUser->description }}
                                 </div>
                             </div>
+                            @foreach ($getUser->getSupportReply as $value) @if (Auth::user()->id == $value->user_id)
                             <div class="item">
                                 <div class="text">
                                     <div class="heading">
-                                        <a href="#">Hard</a>
-                                        <span class="date">16-12-2024</span>
+                                        <a href="#">{{ !empty($value->user->name) ? $value->user->name : '' }}</a>
+                                        <span class="date">{{ date('d-m-Y', strtotime($value->created_at)) }}</span>
                                     </div>
-                                    Good Work
+                                    {{ $value->description }}
                                 </div>
                             </div>
+                            @else
                             <div class="item in">
                                 <div class="text">
                                     <div class="heading">
-                                        <a href="#">Error</a>
-                                        <span class="date">17-12-2024</span>
+                                        <a href="#">{{ !empty($value->user->name) ? $value->user->name : '' }}</a>
+                                        <span class="date">{{ date('d-m-Y', strtotime($value->created_at)) }}</span>
                                     </div>
-                                    Good Work Done
+                                    {{ $value->description }}
                                 </div>
                             </div>
+                            @endif @endforeach
                         </div>
-                        <div class="panel panel-default push-up-10">
+                        @if (empty($getUser->status))
+                        <div class="panel panel-default push-up-10 mt-3">
                             <div class="panel-body panel-body-search">
                                 <form action="" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
@@ -60,6 +64,7 @@
                                 </form>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
