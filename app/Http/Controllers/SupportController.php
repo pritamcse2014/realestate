@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Support;
+use App\Models\SupportReply;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SupportController extends Controller
 {
@@ -31,5 +33,16 @@ class SupportController extends Controller
 
         $json['success'] = true;
         echo json_encode($json);
+    }
+
+    public function adminSupportReplyStatusUpdate(Request $request, $id) {
+        // dd($request->all());
+        $getSupportReply = new SupportReply;
+        $getSupportReply->user_id = Auth::user()->id;
+        $getSupportReply->support_id = $request->id;
+        $getSupportReply->description = $request->description;
+        $getSupportReply->save();
+
+        return redirect('admin/support/reply/' .$id)->with('success', 'Support Reply Status Updated Successfully.');
     }
 }
