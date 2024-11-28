@@ -13,6 +13,67 @@
         <div class="col-lg-12 stretch-card">
             <div class="card">
                 <div class="card-body">
+                    <h6 class="card-title">Search Support</h6>
+                    <form method="GET" action="">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your ID</label>
+                                    <input class="form-control" type="text" name="id" id="id" value="{{ Request()->id }}" placeholder="Enter Your ID" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Select Your User Name</label>
+                                    <select class="form-control" name="user_id" id="">
+                                        <option value="">Select User Name</option>
+                                        @foreach ($getUser as $value)
+                                        <option {{ (Request()->user_id == $value->id) ? 'selected' : '' }} value="{{ $value->id }}">{{ $value->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Title</label>
+                                    <input class="form-control" type="text" name="title" id="title" value="{{ Request()->title }}" placeholder="Enter Your Title" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Select Your Status</label>
+                                    <select class="form-control" name="status" id="">
+                                        <option value="">Select Status</option>
+                                        <option {{ (Request()->status == '1') ? 'selected' : '' }} value="1">Closed</option>
+                                        <option {{ (Request()->status == '1000') ? 'selected' : '' }} value="1000">Open</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Created At</label>
+                                    <input class="form-control" type="date" name="created_at" id="created_at" value="{{ Request()->created_at }}" placeholder="Enter Your Created At" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Updated At</label>
+                                    <input class="form-control" type="date" name="updated_at" id="updated_at" value="{{ Request()->updated_at }}" placeholder="Enter Your Updated At" />
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary me-1" type="submit">Search</button>
+                        <a class="btn btn-danger ms-1" href="{{ url('admin/support') }}">Reset</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-12 stretch-card">
+            <div class="card">
+                <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <h4 class="card-title">Support List</h4>
                         <div class="d-flex align-items-center"></div>

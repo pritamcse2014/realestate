@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Support;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SupportController extends Controller
@@ -12,6 +13,7 @@ class SupportController extends Controller
         // die();
         $getSupport = Support::getDetails($request);
         $data['getRecord'] = $getSupport;
+        $data['getUser'] = User::get();
         return view('admin.support.list', $data);
     }
 }
