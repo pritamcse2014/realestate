@@ -378,5 +378,19 @@
                 });
             });
         </script>
+
+        <script type="text/javascript">
+            $('.delete-all-option').change(function () {
+                var total = '';
+                $('.delete-all-option').each(function () {
+                    if (this.checked) {
+                        var id = $(this).val();
+                        total += id + ',';
+                    }
+                });
+                var url = '{{ url('admin/support/deleteMultipleItem?id=') }}' + total;
+                $('#getDeleteUrl').attr('href', url);
+            });
+        </script>
     </body>
 </html>

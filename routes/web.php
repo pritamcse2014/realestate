@@ -262,6 +262,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/support/statusUpdate/{id}', [SupportController::class, 'adminSupportStatusUpdate']);
 
+    Route::get('admin/support/deleteMultipleItem', [SupportController::class, 'adminSupportDeleteMultipleItem']);
+
     Route::get('admin/email/compose', [EmailController::class, 'adminEmailCompose']);
 
     Route::post('admin/email/composePost', [EmailController::class, 'adminEmailComposePost']);

@@ -76,12 +76,15 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <h4 class="card-title">Support List</h4>
-                        <div class="d-flex align-items-center"></div>
+                        <div class="d-flex align-items-center">
+                            <a class="btn btn-danger" id="getDeleteUrl" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+                        </div>
                     </div>
                     <div class="table-responsive pt-3">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
+                                    <th>Delete</th>
                                     <th>#</th>
                                     <th>User Name</th>
                                     <th>Title</th>
@@ -96,6 +99,9 @@
                             <tbody>
                                 @forelse ($getRecord as $value)
                                 <tr>
+                                    <td>
+                                        <input class="delete-all-option" type="checkbox" value="{{ $value->id }}" id="">
+                                    </td>
                                     <td>{{ $value->id }}</td>
                                     <td>{{ !empty($value->user->name) ? $value->user->name : '' }}</td>
                                     <td>{{ $value->title }}</td>

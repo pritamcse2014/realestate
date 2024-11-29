@@ -60,4 +60,17 @@ class SupportController extends Controller
 
         return redirect()->back()->with('success', 'Support Status Updated Successfully.');
     }
+
+    public function adminSupportDeleteMultipleItem(Request $request) {
+        if (!empty($request->id)) {
+            $option = explode(',', $request->id);
+            foreach ($option as $id) {
+                if (!(empty($id))) {
+                    $getSupport = Support::find($id);
+                    $getSupport->delete();
+                }
+            }
+        }
+        return redirect()->back()->with('success', 'Support Multiple Items Deleted Successfully.');
+    }
 }
