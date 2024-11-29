@@ -7,6 +7,7 @@ use App\Models\SupportReply;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SupportController extends Controller
 {
@@ -44,5 +45,19 @@ class SupportController extends Controller
         $getSupportReply->save();
 
         return redirect('admin/support/reply/' .$id)->with('success', 'Support Reply Status Updated Successfully.');
+    }
+
+    public function adminSupportStatusUpdate($id) {
+        $adminSupportStatus = DB::table('support')->select('status')->where('id', '=', $id)->first();
+
+        if ($adminSupportStatus->status == "1") {
+            $status = "0";
+        } else {
+            $status = "1";
+        }
+        $value = array('status' => $status);
+        DB::table('support')->where('id', $id)->update($value);
+
+        return redirect()->back()->with('success', 'Support Status Updated Successfully.');
     }
 }
