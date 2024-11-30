@@ -285,4 +285,14 @@ class AdminController extends Controller
         $user->save();
         return redirect('admin/login')->with('success', 'Password Reset Successfully.');
     }
+
+    public function generateUUID() {
+        // Example - 1
+        $uuid1 = Str::uuid()->toString();
+        dd($uuid1);
+
+        // Example - 2
+        $uuid2 = Str::orderedUUID()->toString();
+        dd($uuid2);
+    }
 }
