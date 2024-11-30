@@ -8,6 +8,7 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DiscountCodeController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
@@ -304,3 +305,7 @@ Route::get('generate/UUID', [AdminController::class, 'generateUUID']);
 Route::get('notification', [NotificationController::class, 'notificationList']);
 
 Route::get('notification/{type}', [NotificationController::class, 'notificationListType'])->name('notification');
+
+Route::get('item/create', [ItemController::class, 'itemCreate']);
+
+Route::get('item/search', [ItemController::class, 'itemSearch']);
