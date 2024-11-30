@@ -61,4 +61,34 @@ class NotificationController extends Controller
         }
         return redirect('admin/notification')->with('success', 'Notification Send Successfully.');
     }
+
+    public function notificationList() {
+        // echo "Notification List";
+        // die();
+        return view('notifications.list');
+    }
+
+    public function notificationListType($type) {
+        // dd($type);
+        switch($type) {
+            case 'success':
+                return back()->with('success', 'User Created Successfully.');
+                break;
+            
+                case 'info':
+                return back()->with('info', 'User Updated Successfully.');
+                break;
+            
+                case 'warning':
+                return back()->with('warning', 'User Cannot Access Page.');
+                break;
+                
+                case 'danger':
+                return back()->with('danger', 'User Deleted Successfully.');
+                break;
+
+                default:
+                break;
+        }
+    }
 }
