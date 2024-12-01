@@ -200,6 +200,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::get('admin/productCart', [ProductCartController::class, 'adminProductCartList']);
 
+    Route::get('admin/productCart/add', [ProductCartController::class, 'adminAddProductCart']);
+
+    Route::post('admin/productCart/add', [ProductCartController::class, 'adminStoreProductCart']);
+
     Route::get('admin/order', [OrderController::class, 'adminOrderList']);
 
     Route::get('admin/order/add', [OrderController::class, 'adminAddOrder']);
