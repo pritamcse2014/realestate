@@ -34,16 +34,20 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($getRecord as $value)
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->name }}</td>
+                                    <td>{{ $value->description }}</td>
+                                    <td>
+                                        <img class="wd-100 ht-100 rounded-circle" src="{{ asset('product/' .$value->image) }}" alt="" srcset="" />
+                                    </td>
+                                    <td>{{ $value->price }}</td>
+                                    <td>{{ date('d-m-Y H:i:s', strtotime($value->created_at)) }}</td>
+                                    <td>{{ date('d-m-Y H:i:s', strtotime($value->updated_at)) }}</td>
                                     <td></td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
