@@ -51,7 +51,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <div style="padding: 20px; float: right;"></div>
+                    <div style="padding: 20px; float: right;">
+                        {!! $getRecord->appends(Request::except('page'))->links() !!}
+                    </div>
                 </div>
             </div>
         </div>

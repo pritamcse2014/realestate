@@ -11,7 +11,9 @@ class ProductCartController extends Controller
     public function adminProductCartList() {
         // echo "Product Cart List";
         // die();
-        $data['getRecord'] = ProductCart::get();
+        $getRecord = ProductCart::orderBy('id', 'desc');
+        $getRecord = $getRecord->paginate(10);
+        $data['getRecord'] = $getRecord;
         return view('admin.productcart.list', $data);
     }
 
