@@ -30,6 +30,12 @@
                     <span class="link-title">Color</span>
                 </a>
             </li>
+            <li class="nav-item @if(Request::segment(2) === 'productCart') active @endif">
+                <a href="{{ url('admin/productCart') }}" class="nav-link">
+                    <i class="link-icon" data-feather="package"></i>
+                    <span class="link-title">Product Cart</span>
+                </a>
+            </li>
             <li class="nav-item @if(Request::segment(2) === 'order') active @endif">
                 <a href="{{ url('admin/order') }}" class="nav-link">
                     <i class="link-icon" data-feather="shopping-cart"></i>

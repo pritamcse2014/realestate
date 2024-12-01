@@ -11,6 +11,7 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductCartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\SendPdfController;
@@ -196,6 +197,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::get('admin/color/pdf/{id}', [ColorController::class, 'adminColorPdf']);
 
     Route::post('admin/color/change-status', [ColorController::class, 'adminColorChangeStatus']);
+
+    Route::get('admin/productCart', [ProductCartController::class, 'adminProductCartList']);
 
     Route::get('admin/order', [OrderController::class, 'adminOrderList']);
 
