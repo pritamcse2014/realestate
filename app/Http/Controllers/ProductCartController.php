@@ -8,10 +8,23 @@ use Illuminate\Support\Str;
 
 class ProductCartController extends Controller
 {
-    public function adminProductCartList() {
+    public function adminProductCartList(Request $request) {
         // echo "Product Cart List";
         // die();
         $getRecord = ProductCart::orderBy('id', 'desc');
+        if (!empty($request->id)) {
+            $getRecord = $getRecord->where('product_cart.id', '=', $request->id);
+        } if (!empty($request->name)) {
+            $getRecord = $getRecord->where('product_cart.name', 'like', '%' . $request->name . '%');
+        } if (!empty($request->description)) {
+            $getRecord = $getRecord->where('product_cart.description', 'like', '%' . $request->description . '%');
+        } if (!empty($request->price)) {
+            $getRecord = $getRecord->where('product_cart.price', 'like', '%' . $request->price . '%');
+        } if (!empty($request->created_at)) {
+            $getRecord = $getRecord->where('product_cart.created_at', 'like', '%' . $request->created_at . '%');
+        } if (!empty($request->updated_at)) {
+            $getRecord = $getRecord->where('product_cart.updated_at', 'like', '%' . $request->updated_at . '%');
+        }
         $getRecord = $getRecord->paginate(10);
         $data['getRecord'] = $getRecord;
         return view('admin.productcart.list', $data);

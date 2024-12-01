@@ -13,6 +13,58 @@
         <div class="col-lg-12 stretch-card">
             <div class="card">
                 <div class="card-body">
+                    <h6 class="card-title">Search Product Cart</h6>
+                    <form method="GET" action="">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your ID</label>
+                                    <input class="form-control" type="text" name="id" id="id" value="{{ Request()->id }}" placeholder="Enter Your ID" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Name</label>
+                                    <input class="form-control" type="text" name="name" id="name" value="{{ Request()->name }}" placeholder="Enter Your Name" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Description</label>
+                                    <input class="form-control" type="text" name="description" id="description" value="{{ Request()->description }}" placeholder="Enter Your Description" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Price</label>
+                                    <input class="form-control" type="number" name="price" id="price" value="{{ Request()->price }}" placeholder="Enter Your Price" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Created At</label>
+                                    <input class="form-control" type="date" name="created_at" id="created_at" value="{{ Request()->created_at }}" placeholder="Enter Your Created At" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Enter Your Updated At</label>
+                                    <input class="form-control" type="date" name="updated_at" id="updated_at" value="{{ Request()->updated_at }}" placeholder="Enter Your Updated At" />
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary me-1" type="submit">Search</button>
+                        <a class="btn btn-danger ms-1" href="{{ url('admin/productCart') }}">Reset</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-12 stretch-card">
+            <div class="card">
+                <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <h4 class="card-title">Product Cart List</h4>
                         <div class="d-flex align-items-center">
@@ -34,7 +86,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($getRecord as $value)
+                                @forelse ($getRecord as $value)
                                 <tr>
                                     <td>{{ $value->id }}</td>
                                     <td>{{ $value->name }}</td>
@@ -47,7 +99,11 @@
                                     <td>{{ date('d-m-Y H:i:s', strtotime($value->updated_at)) }}</td>
                                     <td></td>
                                 </tr>
-                                @endforeach
+                                @empty
+                                <tr>
+                                    <td colspan="100%">No Record Found....</td>
+                                </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
