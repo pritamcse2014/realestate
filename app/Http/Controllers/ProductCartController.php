@@ -84,4 +84,10 @@ class ProductCartController extends Controller
 
         return redirect('admin/productCart')->with('success', 'Product Cart Deleted Successfully.');
     }
+
+    public function productCartIndex() {
+        // echo "Product Cart List";
+        // die();
+        return view('productcart.index');
+    }
 }

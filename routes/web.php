@@ -322,3 +322,5 @@ Route::get('notification/{type}', [NotificationController::class, 'notificationL
 Route::get('item/create', [ItemController::class, 'itemCreate']);
 
 Route::get('item/search', [ItemController::class, 'itemSearch']);
+
+Route::get('productCart', [ProductCartController::class, 'productCartIndex']);
