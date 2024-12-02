@@ -86,7 +86,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($getRecord as $value)
+                                @php $totalPrice = 0; @endphp @forelse ($getRecord as $value) @php $totalPrice = $totalPrice + $value->price; @endphp
                                 <tr>
                                     <td>{{ $value->id }}</td>
                                     <td>{{ $value->name }}</td>
@@ -94,7 +94,7 @@
                                     <td>
                                         <img class="wd-100 ht-100 rounded-circle" src="{{ asset('product/' .$value->image) }}" alt="" srcset="" />
                                     </td>
-                                    <td>{{ $value->price }}</td>
+                                    <td>{{ number_format($value->price, 2) }}</td>
                                     <td>{{ date('d-m-Y H:i:s', strtotime($value->created_at)) }}</td>
                                     <td>{{ date('d-m-Y H:i:s', strtotime($value->updated_at)) }}</td>
                                     <td></td>
@@ -103,7 +103,13 @@
                                 <tr>
                                     <td colspan="100%">No Record Found....</td>
                                 </tr>
-                                @endforelse
+                                @endforelse @if (!empty($totalPrice))
+                                <tr>
+                                    <th colspan="4">Total Amount</th>
+                                    <td>{{ number_format($totalPrice, 2) }}</td>
+                                    <th colspan="4"></th>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
