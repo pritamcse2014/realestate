@@ -77,4 +77,11 @@ class ProductCartController extends Controller
 
         return redirect('admin/productCart')->with('success', 'Product Cart Updated Successfully.');
     }
+
+    public function adminProductCartDelete($id) {
+        $save = ProductCart::find($id);
+        $save->delete();
+
+        return redirect('admin/productCart')->with('success', 'Product Cart Deleted Successfully.');
+    }
 }
