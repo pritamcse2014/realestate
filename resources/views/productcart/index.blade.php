@@ -69,12 +69,18 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a class="btn btn-success" href="">View All</a>
+                                <a class="btn btn-success" href="{{ route('productCartAll') }}">View All</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row mt-3">
+                <div class="col-md-10 offset-md-1">
+                    @yield('content')
+                </div>
+            </div>
         </div>
+        @yield('script')
     </body>
 </html>

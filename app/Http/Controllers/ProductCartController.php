@@ -90,4 +90,8 @@ class ProductCartController extends Controller
         // die();
         return view('productcart.index');
     }
+
+    public function productCartAll() {
+        return view('productcart.cart');
+    }
 }
