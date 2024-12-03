@@ -88,7 +88,8 @@ class ProductCartController extends Controller
     public function productCartIndex() {
         // echo "Product Cart List";
         // die();
-        return view('productcart.index');
+        $products = ProductCart::all();
+        return view('productcart.index', compact('products'));
     }
 
     public function productCartAll() {

@@ -2,50 +2,19 @@
 @section('content')
 
 <div class="row mt-4">
+    @foreach ($products as $product)
     <div class="col-md-3">
         <div class="card text-center">
-            <img class="card-img-top" src="{{ asset('product/LPb3VbrG518peEe429SH0s7tOdKCzW.jpg') }}" alt="" srcset="" />
+            <img style="width: full; height: 150px;" class="card-img-top" src="{{ asset('product/'.$product->image) }}" alt="" srcset="" />
             <div class="caption card-body">
-                <h4>Name</h4>
-                <p>Description</p>
-                <p><strong>Price : </strong>$10</p>
+                <h4>{{ $product->name }}</h4>
+                <p>{{ $product->description }}</p>
+                <p><strong>Price : </strong>${{ $product->price }}</p>
                 <a href="">Add To Cart</a>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card text-center">
-            <img class="card-img-top" src="{{ asset('product/LPb3VbrG518peEe429SH0s7tOdKCzW.jpg') }}" alt="" srcset="" />
-            <div class="caption card-body">
-                <h4>Name</h4>
-                <p>Description</p>
-                <p><strong>Price : </strong>$10</p>
-                <a href="">Add To Cart</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card text-center">
-            <img class="card-img-top" src="{{ asset('product/LPb3VbrG518peEe429SH0s7tOdKCzW.jpg') }}" alt="" srcset="" />
-            <div class="caption card-body">
-                <h4>Name</h4>
-                <p>Description</p>
-                <p><strong>Price : </strong>$10</p>
-                <a href="">Add To Cart</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card text-center">
-            <img class="card-img-top" src="{{ asset('product/LPb3VbrG518peEe429SH0s7tOdKCzW.jpg') }}" alt="" srcset="" />
-            <div class="caption card-body">
-                <h4>Name</h4>
-                <p>Description</p>
-                <p><strong>Price : </strong>$10</p>
-                <a href="">Add To Cart</a>
-            </div>
-        </div>
-    </div>
+    @endforeach
 </div>
 
 @endsection @section('script')
