@@ -11,33 +11,35 @@
         </tr>
     </thead>
     <tbody>
+        @php $total = 0; @endphp @if (session('productCartAll')) @foreach (session('productCartAll') as $id => $details) @php $total += $details['price'] * $details['quantity']; @endphp
         <tr data-id="">
             <td data-th="Product">
                 <div class="row">
                     <div class="col-sm-3 hidden-xs">
-                        <img class="img-responsive" src="{{ asset('product/LPb3VbrG518peEe429SH0s7tOdKCzW.jpg') }}" alt="" srcset="" width="100" height="150" />
+                        <img style="width: full; height: 150px;" class="img-fluid" src="{{ asset('product/' .$details['image']) }}" alt="" srcset="" />
                     </div>
                     <div class="col-sm-9">
-                        <h4 class="nomargin">Name</h4>
+                        <h4 class="nomargin">{{ $details['name'] }}</h4>
                     </div>
                 </div>
             </td>
-            <td data-th="Price">$125</td>
+            <td data-th="Price">{{ $details['price'] }}</td>
             <td data-th="Quantity">
-                <input class="form-control quantity update-cart" type="number" value="1" />
+                <input class="form-control quantity update-cart" type="number" value="{{ $details['quantity'] }}" />
             </td>
-            <td class="text-center" data-th="Subtotal">$10 * 4</td>
+            <td class="text-center" data-th="Subtotal">${{ $details['price'] * $details['quantity'] }}</td>
             <td class="actions" data-th="">
                 <button class="btn btn-danger btn-sm remove-from-cart">
                     <i class="fa fa-trash-o"></i>
                 </button>
             </td>
         </tr>
+        @endforeach @endif
     </tbody>
     <tfoot>
         <tr>
             <td colspan="5" class="text-right">
-                <h3><strong>Total $125</strong></h3>
+                <h3><strong>Total = ${{ $total }}</strong></h3>
             </td>
         </tr>
         <tr>
