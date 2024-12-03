@@ -1,4 +1,4 @@
-@extends('productcart.index')
+@extends('productcart.layout')
 @section('content')
 <table id="cart" class="table table-hover table-condensed">
     <thead>
