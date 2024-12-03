@@ -326,3 +326,5 @@ Route::get('item/search', [ItemController::class, 'itemSearch']);
 Route::get('productCart', [ProductCartController::class, 'productCartIndex']);
 
 Route::get('productCartAll', [ProductCartController::class, 'productCartAll'])->name('productCartAll');
+
+Route::get('addToCart/{id}', [ProductCartController::class, 'addToCart'])->name('addToCart');

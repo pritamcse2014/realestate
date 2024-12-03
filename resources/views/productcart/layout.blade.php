@@ -48,26 +48,34 @@
                     <div class="dropdown">
                         <button type="button" class="btn btn-success dropdown-toggle mt-1" data-bs-toggle="dropdown">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
-                            <span class="badge badge-pill badge-danger">111</span>
+                            <span class="badge badge-pill badge-danger">{{ count((array) session('productCartAll')) }}</span>
                         </button>
                         <div class="dropdown-menu">
                             <div class="row total-header-section">
                                 <div class="col-lg-6 col-sm-6 col-6">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    <span class="badge badge-pill badge-danger">121</span>
+                                    <span class="badge badge-pill badge-danger" style="color: goldenrod;">{{ count((array) session('productCartAll')) }}</span>
+                                </div>
+                                @php $total = 0; @endphp @foreach ((array) session('productCartAll') as $id => $details) @php $total += $details['price'] * $details['quantity'] @endphp @endforeach
+                                <div class="col-md-6 text-end">
+                                    <p>
+                                        <strong>Total : <span class="text-warning">${{ $total }}</span></strong>
+                                    </p>
                                 </div>
                             </div>
+                            @if (session('productCartAll')) @foreach (session('productCartAll') as $id => $details)
                             <div class="row cart-detail pb-3 pt-2">
                                 <div class="col-lg-4 col-sm-4 col-4">
-                                    <img class="img-fluid" src="{{ asset('product/LPb3VbrG518peEe429SH0s7tOdKCzW.jpg') }}" alt="" srcset="" />
+                                    <img style="width: 100px; height: 100px;" class="img-fluid" src="{{ asset('product/' .$details['image']) }}" alt="" srcset="" />
                                 </div>
                                 <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
-                                    <p class="mb-0">Name : Earbuds</p>
-                                    <span class="fs-8 text-info">Price : $999</span>
+                                    <p class="mb-0">{{ $details['name'] }}</p>
+                                    <span class="fs-8 text-success">Price : {{ $details['price'] }}</span>
                                     <br />
-                                    <span class="fs-8 fw-lighter">Quantity : 141</span>
+                                    <span class="fs-8 fw-lighter">Quantity : {{ $details['quantity'] }}</span>
                                 </div>
                             </div>
+                            @endforeach @endif
                             <div class="text-center">
                                 <a class="btn btn-success" href="{{ route('productCartAll') }}">View All</a>
                             </div>

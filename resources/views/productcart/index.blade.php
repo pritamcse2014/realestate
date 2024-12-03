@@ -10,7 +10,7 @@
                 <h4>{{ $product->name }}</h4>
                 <p>{{ $product->description }}</p>
                 <p><strong>Price : </strong>${{ $product->price }}</p>
-                <a href="">Add To Cart</a>
+                <a class="btn btn-primary" role="button" href="{{ route('addToCart', $product->id) }}">Add To Cart</a>
             </div>
         </div>
     </div>
