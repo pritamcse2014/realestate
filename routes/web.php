@@ -330,3 +330,5 @@ Route::get('productCartAll', [ProductCartController::class, 'productCartAll'])->
 Route::get('addToCart/{id}', [ProductCartController::class, 'addToCart'])->name('addToCart');
 
 Route::patch('updateCart', [ProductCartController::class, 'updateCart'])->name('updateCart');
+
+Route::delete('removeFromCart', [ProductCartController::class, 'removeFromCart'])->name('removeFromCart');

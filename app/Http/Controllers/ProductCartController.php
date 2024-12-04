@@ -121,4 +121,16 @@ class ProductCartController extends Controller
             session()->flash('success', 'Add To Cart Updated Successfully.');
         }
     }
+
+    public function removeFromCart(Request $request) {
+        if ($request->id) {
+            $productCartAll = session()->get('productCartAll');
+
+            if (isset($productCartAll[$request->id])) {
+                unset($productCartAll[$request->id]);
+                session()->put('productCartAll', $productCartAll);
+            }
+            session()->flash('success', 'Add To Cart Deleted Successfully.');
+        }
+    }
 }

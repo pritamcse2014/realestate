@@ -7,7 +7,7 @@
             <th style="width: 10%;">Price</th>
             <th style="width: 8%;">Quantity</th>
             <th style="width: 22%;">Subtotal</th>
-            <th style="width: 10%;"></th>
+            <th style="width: 10%;">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -67,6 +67,24 @@
                 window.location.reload();
             }
         });
+    });
+
+    $(".remove-from-cart").click(function (event) {
+        event.preventDefault();
+        var element = $(this);
+        if (confirm('Are you sure want to Delete?')) {
+            $.ajax({
+                url : '{{ route('removeFromCart') }}',
+                method : 'DELETE',
+                data : {
+                    _token : '{{ csrf_token() }}',
+                    id : element.parents("tr").attr("data-id"),
+                },
+                success : function (response) {
+                    window.location.reload();
+                }
+            });
+        }
     });
 </script>
 @endsection
