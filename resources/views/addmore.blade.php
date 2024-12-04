@@ -58,6 +58,25 @@
                             <button type="submit" class="btn btn-success btn-block"><i class="fa fa-save"></i> Submit</button>
                         </div>
                     </form>
+                    <h5 class="mt-5">Category List</h5>
+                    <table class="table table-bordered data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Total Price</th>
+                                <th>Total Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
