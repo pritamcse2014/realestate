@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DiscountCodeController;
@@ -332,3 +333,5 @@ Route::get('addToCart/{id}', [ProductCartController::class, 'addToCart'])->name(
 Route::patch('updateCart', [ProductCartController::class, 'updateCart'])->name('updateCart');
 
 Route::delete('removeFromCart', [ProductCartController::class, 'removeFromCart'])->name('removeFromCart');
+
+Route::get('addMore', [CategoryController::class, 'addMore']);
