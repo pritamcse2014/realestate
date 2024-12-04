@@ -328,3 +328,5 @@ Route::get('productCart', [ProductCartController::class, 'productCartIndex']);
 Route::get('productCartAll', [ProductCartController::class, 'productCartAll'])->name('productCartAll');
 
 Route::get('addToCart/{id}', [ProductCartController::class, 'addToCart'])->name('addToCart');
+
+Route::patch('updateCart', [ProductCartController::class, 'updateCart'])->name('updateCart');

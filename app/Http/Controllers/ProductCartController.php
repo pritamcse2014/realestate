@@ -112,4 +112,13 @@ class ProductCartController extends Controller
         session()->put('productCartAll', $productCartAll);
         return redirect()->back()->with('success', 'Product Add To Cart Successfully.');
     }
+
+    public function updateCart(Request $request) {
+        if ($request->id & $request->quantity) {
+            $productCartAll = session()->get('productCartAll');
+            $productCartAll[$request->id]['quantity'] = $request->quantity;
+            session()->put('productCartAll', $productCartAll);
+            session()->flash('success', 'Add To Cart Updated Successfully.');
+        }
+    }
 }

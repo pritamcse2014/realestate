@@ -12,7 +12,7 @@
     </thead>
     <tbody>
         @php $total = 0; @endphp @if (session('productCartAll')) @foreach (session('productCartAll') as $id => $details) @php $total += $details['price'] * $details['quantity']; @endphp
-        <tr data-id="">
+        <tr data-id="{{ $id }}">
             <td data-th="Product">
                 <div class="row">
                     <div class="col-sm-3 hidden-xs">
@@ -51,5 +51,22 @@
     </tfoot>
 </table>
 @endsection @section('script')
-<script type="text/javascript"></script>
+<script type="text/javascript">
+    $(".update-cart").change(function (event) {
+        event.preventDefault();
+        var element = $(this);
+        $.ajax({
+            url : '{{ route('updateCart') }}',
+            method : 'Patch',
+            data : {
+                _token : '{{ csrf_token() }}',
+                id : element.parents("tr").attr("data-id"),
+                quantity : element.parents("tr").find(".quantity").val(),
+            },
+            success : function (response) {
+                window.location.reload();
+            }
+        });
+    });
+</script>
 @endsection
