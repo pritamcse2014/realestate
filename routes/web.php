@@ -15,6 +15,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductCartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QRCodeController;
+use App\Http\Controllers\QuillController;
 use App\Http\Controllers\SendPdfController;
 use App\Http\Controllers\SMTPController;
 use App\Http\Controllers\SupportController;
@@ -337,3 +338,5 @@ Route::delete('removeFromCart', [ProductCartController::class, 'removeFromCart']
 Route::get('addMore', [CategoryController::class, 'addMore']);
 
 Route::post('addMore', [CategoryController::class, 'addMoreStore'])->name('addMore');
+
+Route::get('quillEditor', [QuillController::class, 'quillEditor']);
