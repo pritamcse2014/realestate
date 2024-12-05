@@ -30,6 +30,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php $key = 0; @endphp
                                 <tr>
                                     <td>
                                         <input class="form-control" type="number" name="" id="" placeholder="Quantity" />
@@ -81,4 +82,19 @@
             </div>
         </div>
     </body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            i = "{{ $key }}";
+            $(".btn-add-more").click(function (event) {
+                event.preventDefault();
+                i++;
+                $(".table-add-more").append(
+                    '<tr><td><input class="form-control" type="number" name="" placeholder="Quantity" /></td><td><input class="form-control" type="number" name="" placeholder="Price" /></td><td><button class="btn btn-danger btn-sm btn-add-more-rm"><i class="fa fa-trash"></i></button></td></tr>'
+                );
+            });
+            $(document).on("click", ".btn-add-more-rm", function () {
+                $(this).parents("tr").remove();
+            });
+        });
+    </script>
 </html>
