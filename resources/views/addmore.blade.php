@@ -14,11 +14,18 @@
             <div class="card mt-5">
                 <h3 class="card-header p-3">Add More Fields</h3>
                 <div class="card-body">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    @session('success')
+                    <div class="alert alert-success" role="alert">{{ $value }}</div>
+                    @endsession
+                    <form action="{{ route('addMore') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <h5>Create Category</h5>
                         <div class="form-group">
                             <label for="">Name</label>
-                            <input class="form-control" type="text" name="" id="" placeholder="Name" />
+                            <input class="form-control" type="text" name="name" value="{{ request()->old('name') }}" id="" placeholder="Name" />
+                            @error("name")
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                         <table class="table table-bordered mt-2 table-add-more">
                             <thead>
@@ -30,29 +37,37 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $key = 0; @endphp
+                                @php $key = 0; @endphp @if (request()->old('stock')) @foreach (request()->old('stock') as $key => $stock)
                                 <tr>
                                     <td>
-                                        <input class="form-control" type="number" name="" id="" placeholder="Quantity" />
+                                        <input class="form-control" type="number" name="stock[{{$key}}][quantity]" value="{{ $stock['quantity'] ?? '' }}" id="" placeholder="Quantity" />
+                                        @error("stock.{$key}.quantity")
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </td>
                                     <td>
-                                        <input class="form-control" type="number" name="" id="" placeholder="Price" />
+                                        <input class="form-control" type="number" name="stock[{{$key}}][price]" value="{{ $stock['price'] ?? '' }}" id="" placeholder="Price" />
+                                        @error("stock.{$key}.price")
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </td>
                                     <td>
                                         <button class="btn btn-danger btn-sm btn-add-more-rm"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
+                                @endforeach @else
                                 <tr>
                                     <td>
-                                        <input class="form-control" type="number" name="" id="" placeholder="Quantity" />
+                                        <input class="form-control" type="number" name="stock[0][quantity]" id="" placeholder="Quantity" />
                                     </td>
                                     <td>
-                                        <input class="form-control" type="number" name="" id="" placeholder="Price" />
+                                        <input class="form-control" type="number" name="stock[0][price]" id="" placeholder="Price" />
                                     </td>
                                     <td>
                                         <button class="btn btn-danger btn-sm btn-add-more-rm"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
+                                @endif
                             </tbody>
                         </table>
                         <div class="form-group mt-2">
@@ -89,7 +104,11 @@
                 event.preventDefault();
                 i++;
                 $(".table-add-more").append(
-                    '<tr><td><input class="form-control" type="number" name="" placeholder="Quantity" /></td><td><input class="form-control" type="number" name="" placeholder="Price" /></td><td><button class="btn btn-danger btn-sm btn-add-more-rm"><i class="fa fa-trash"></i></button></td></tr>'
+                    '<tr><td><input class="form-control" type="number" name="stock[' +
+                        i +
+                        '][quantity]" placeholder="Quantity" /></td><td><input class="form-control" type="number" name="stock[' +
+                        i +
+                        '][price]" placeholder="Price" /></td><td><button class="btn btn-danger btn-sm btn-add-more-rm"><i class="fa fa-trash"></i></button></td></tr>'
                 );
             });
             $(document).on("click", ".btn-add-more-rm", function () {
