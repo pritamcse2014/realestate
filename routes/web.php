@@ -340,3 +340,5 @@ Route::get('addMore', [CategoryController::class, 'addMore']);
 Route::post('addMore', [CategoryController::class, 'addMoreStore'])->name('addMore');
 
 Route::get('quillEditor', [QuillController::class, 'quillEditor']);
+
+Route::post('quillEditor', [QuillController::class, 'quillEditorStore']);
