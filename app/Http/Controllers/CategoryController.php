@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function addMore() {
-        return view('addmore');
+        $products = Category::paginate(5);
+        return view('addmore', compact('products'));
     }
 
     public function addMoreStore(Request $request) {

@@ -80,19 +80,26 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Total Price</th>
                                 <th>Total Quantity</th>
+                                <th>Total Price</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse ($products as $product)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $product->id }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->stock->sum('quantity') }}</td>
+                                <td>{{ $product->stock->sum('price') }}</td>
                             </tr>
+                            @empty
+                            <tr>
+                                <td colspan="100%">No Record Found....</td>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
+                    {!! $products->links('pagination::bootstrap-5') !!}
                 </div>
             </div>
         </div>
