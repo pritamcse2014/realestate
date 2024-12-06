@@ -320,6 +320,8 @@ Route::get('generate/UUID', [AdminController::class, 'generateUUID']);
 
 Route::get('dateFormat', [AdminController::class, 'dateFormat']);
 
+Route::get('usersList', [AdminController::class, 'usersList'])->name('usersList');
+
 Route::get('notification', [NotificationController::class, 'notificationList']);
 
 Route::get('notification/{type}', [NotificationController::class, 'notificationListType'])->name('notification');

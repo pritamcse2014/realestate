@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use Yajra\DataTables\Facades\DataTables;
 
 class AdminController extends Controller
 {
@@ -322,5 +323,20 @@ class AdminController extends Controller
         $date = '2024-12-06';
         $newDate = Carbon::createFromFormat('Y-m-d', $date)->format('d/m/Y');
         dd($newDate);
+    }
+
+    public function usersList(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = User::select(['id', 'name', 'email']);
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    return '<a class="edit btn btn-primary btn-sm" href="javascript:void(0)">View</a>';
+                })
+                ->rawColumns(['action']) // Use rawColumns, not rowColumns
+                ->make(true);
+        }
+        return view('userslist');
     }
 }
