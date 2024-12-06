@@ -11,7 +11,8 @@ class QuillController extends Controller
     public function quillEditor():View {
         // echo "Quill Editor";
         // die();
-        return view('quill');
+        $data['getRecord'] = Quill::get();
+        return view('quill', $data);
     }
 
     public function quillEditorStore(Request $request) {

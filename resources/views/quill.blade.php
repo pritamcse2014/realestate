@@ -32,6 +32,30 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Quill Rich</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($getRecord as $value)
+                    <tr>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->title }}</td>
+                        <td>{!! $value->quill_rich !!}</td>
+                        <td>{{ date('d-m-Y H:s A', strtotime($value->created_at)) }}</td>
+                        <td>{{ date('d-m-Y H:s A', strtotime($value->updated_at)) }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script type="text/javascript">
