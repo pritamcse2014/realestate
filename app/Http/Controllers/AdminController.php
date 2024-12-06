@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
@@ -294,5 +295,32 @@ class AdminController extends Controller
         // Example - 2
         $uuid2 = Str::orderedUUID()->toString();
         dd($uuid2);
+    }
+
+    public function dateFormat() {
+        // System - 1
+        // $user = User::first();
+        // $newDate = $user->created_at->format('d-m-Y');
+        // dd($newDate);
+
+        // System - 2
+        // $date = date('Y-m-d H:i:a');
+        // $newDate = Carbon::createFromFormat('Y-m-d H:i:a', $date)->format('d/m/y');
+        // dd($newDate);
+
+        // System - 3
+        // $date = '2024-12-06';
+        // $newDate = Carbon::createFromFormat('Y-m-d', $date)->format('d-m-Y');
+        // dd($newDate);
+
+        // System - 4
+        // $date = '12/06/2024';
+        // $newDate = Carbon::createFromFormat('m/d/Y', $date)->format('Y-m-d');
+        // dd($newDate);
+
+        // System - 5
+        $date = '2024-12-06';
+        $newDate = Carbon::createFromFormat('Y-m-d', $date)->format('d/m/Y');
+        dd($newDate);
     }
 }
