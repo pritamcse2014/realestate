@@ -345,3 +345,5 @@ Route::get('quillEditor', [QuillController::class, 'quillEditor']);
 Route::post('quillEditor', [QuillController::class, 'quillEditorStore']);
 
 Route::get('authorizePayment', [AuthorizeNetController::class, 'authorizePayment']);
+
+Route::post('authorizePayment', [AuthorizeNetController::class, 'authorizePaymentStore'])->name('authorizePayment');

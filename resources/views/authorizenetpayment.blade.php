@@ -14,21 +14,54 @@
                     <div class="card mt-5">
                         <h3 class="card-header p-3">Authorize Net Payment</h3>
                         <div class="card-body">
-                            <form action="" method="POST">
+                            @session('success')
+                            <div class="alert alert-success" role="alert">{{ $value }}</div>
+                            @endsession @session('error')
+                            <div class="alert alert-danger" role="alert">{{ $value }}</div>
+                            @endsession
+                            <form action="{{ route('authorizePayment') }}" method="POST">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <label class="col-form-label text-md-right" for="">Enter Your Card Number</label>
-                                        <input class="form-control" type="text" name="" id="" placeholder="Enter Your Card Number" autocomplete="off" maxlength="16" required />
+                                        <label class="col-form-label text-md-right" for="card_number">Enter Your Card Number</label>
+                                        <input
+                                            class="form-control @error('card_number') is-invalid @enderror"
+                                            type="text"
+                                            name="card_number"
+                                            id="card_number"
+                                            placeholder="Enter Your Card Number"
+                                            autocomplete="off"
+                                            maxlength="16"
+                                            required
+                                        />
+                                        @error('card_number')
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label class="col-form-label text-md-right" for="">Enter Your Expiration Date</label>
-                                        <input class="form-control" type="date" name="" id="" placeholder="Enter Your Expiration Date" autocomplete="off" maxlength="16" required />
+                                        <label class="col-form-label text-md-right" for="expiration_date">Enter Your Expiration Date</label>
+                                        <input
+                                            class="form-control @error('expiration_date') is-invalid @enderror"
+                                            type="date"
+                                            name="expiration_date"
+                                            id="expiration_date"
+                                            placeholder="Enter Your Expiration Date"
+                                            autocomplete="off"
+                                            maxlength="16"
+                                            required
+                                        />
+                                        @error('expiration_date')
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="col-form-label text-md-right" for="">Enter Your CVV Number</label>
-                                        <input class="form-control" type="text" name="" id="" placeholder="Enter Your CVV Number" autocomplete="off" maxlength="16" required />
+                                        <label class="col-form-label text-md-right" for="cvv_number">Enter Your CVV Number</label>
+                                        <input class="form-control @error('cvv_number') is-invalid @enderror" type="text" name="cvv_number" id="cvv_number" placeholder="Enter Your CVV Number" autocomplete="off" maxlength="16" required />
+                                        @error('cvv_number')
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row mt-3">
