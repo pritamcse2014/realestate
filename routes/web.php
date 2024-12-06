@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\AuthorizeNetController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\CategoryController;
@@ -342,3 +343,5 @@ Route::post('addMore', [CategoryController::class, 'addMoreStore'])->name('addMo
 Route::get('quillEditor', [QuillController::class, 'quillEditor']);
 
 Route::post('quillEditor', [QuillController::class, 'quillEditorStore']);
+
+Route::get('authorizePayment', [AuthorizeNetController::class, 'authorizePayment']);
