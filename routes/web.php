@@ -340,6 +340,8 @@ Route::patch('updateCart', [ProductCartController::class, 'updateCart'])->name('
 
 Route::delete('removeFromCart', [ProductCartController::class, 'removeFromCart'])->name('removeFromCart');
 
+Route::get('dumpableList', [ProductCartController::class, 'dumpableList']);
+
 Route::get('addMore', [CategoryController::class, 'addMore']);
 
 Route::post('addMore', [CategoryController::class, 'addMoreStore'])->name('addMore');

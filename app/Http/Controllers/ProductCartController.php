@@ -133,4 +133,9 @@ class ProductCartController extends Controller
             session()->flash('success', 'Add To Cart Deleted Successfully.');
         }
     }
+
+    public function dumpableList() {
+        $product = ProductCart::latest()->get();
+        $product->dd();
+    }
 }
