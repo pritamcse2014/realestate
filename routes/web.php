@@ -18,10 +18,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\QuillController;
 use App\Http\Controllers\SendPdfController;
+use App\Http\Controllers\ShopifyPostController;
 use App\Http\Controllers\SMTPController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\UserTimeController;
+use App\Http\Controllers\WordpressPostController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -355,3 +357,7 @@ Route::post('quillEditor', [QuillController::class, 'quillEditorStore']);
 Route::get('authorizePayment', [AuthorizeNetController::class, 'authorizePayment']);
 
 Route::post('authorizePayment', [AuthorizeNetController::class, 'authorizePaymentStore'])->name('authorizePayment');
+
+Route::get('wordpressPost', [WordpressPostController::class, 'wordpressPost']);
+
+Route::get('shopifyPost', [ShopifyPostController::class, 'shopifyPost']);
