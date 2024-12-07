@@ -36,7 +36,7 @@
                         </ul>
                     </div>
                     @endif
-                    <form action="">
+                    <form action="" id="regForm">
                         <div class="mb-2">
                             <label class="form-label" for="">Enter Your Name</label>
                             <input class="form-control" type="text" name="name" id="" placeholder="Enter Your Name" />
@@ -61,5 +61,48 @@
             </div>
         </div>
     </body>
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#regForm").validate({
+                rules: {
+                    name: {
+                        required: true,
+                        maxlength: 60,
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                        maxlength: 50,
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5,
+                    },
+                    confirm_password: {
+                        required: true,
+                        equalTo: "#password",
+                    },
+                },
+                messages: {
+                    name: {
+                        required: "Name is Required.",
+                        maxlength: "Name Cannot be More Than 20 Characters.",
+                    },
+                    email: {
+                        required: "Email is Required.",
+                        email: "Email Must be a Valid Email.",
+                        maxlength: "Email Cannot be More Than 50 Characters.",
+                    },
+                    password: {
+                        required: "Password is Required.",
+                        minlength: "Password Cannot be More Than 5 Characters.",
+                    },
+                    confirm_password: {
+                        required: "Confirm Password is Required.",
+                        equalTo: "Password and Confirm Password Field Should Same.",
+                    },
+                },
+            });
+        });
+    </script>
 </html>
