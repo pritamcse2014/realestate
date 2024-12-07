@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ProductStatus;
+use App\Models\Product;
 use App\Models\ProductCart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -137,5 +139,17 @@ class ProductCartController extends Controller
     public function dumpableList() {
         $product = ProductCart::latest()->get();
         $product->dd();
+    }
+
+    public function productTest() {
+        $input = [
+            'title' => 'Gold Silver',
+            'price' => 10,
+            'product_code' => 123456,
+            'description' => 'Product Description',
+            'status' => ProductStatus::Active,
+        ];
+        $product = Product::create($input);
+        dd($product->status, $product->status->value);
     }
 }

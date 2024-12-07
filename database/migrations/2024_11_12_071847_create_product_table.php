@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('price', 255)->nullable();
             $table->string('product_code', 255)->nullable();
             $table->text('description')->nullable();
+            $table->string('status', 255)->default('pending');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
         });

@@ -342,6 +342,8 @@ Route::delete('removeFromCart', [ProductCartController::class, 'removeFromCart']
 
 Route::get('dumpableList', [ProductCartController::class, 'dumpableList']);
 
+Route::get('productTest', [ProductCartController::class, 'productTest']);
+
 Route::get('addMore', [CategoryController::class, 'addMore']);
 
 Route::post('addMore', [CategoryController::class, 'addMoreStore'])->name('addMore');
