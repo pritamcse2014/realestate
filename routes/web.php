@@ -10,6 +10,7 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DiscountCodeController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
@@ -361,3 +362,5 @@ Route::post('authorizePayment', [AuthorizeNetController::class, 'authorizePaymen
 Route::get('wordpressPost', [WordpressPostController::class, 'wordpressPost']);
 
 Route::get('shopifyPost', [ShopifyPostController::class, 'shopifyPost']);
+
+Route::get('usersCreate', [FormController::class, 'usersCreate']);
