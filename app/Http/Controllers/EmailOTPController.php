@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EmailOTPMail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class EmailOTPController extends Controller
 {
@@ -23,6 +25,7 @@ class EmailOTPController extends Controller
             $randomOTP = rand(1111, 9999);
             $user->email_otp = $randomOTP;
             $user->save();
+            Mail::to($request->email)->send(new EmailOTPMail($user, $randomOTP));
             return redirect()->back()->with('success', 'Email OTP Sent Successfully.');
         } else {
             // dd("ELSE");
