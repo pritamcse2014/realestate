@@ -81,6 +81,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
     Route::post('admin/emailOTP', [EmailOTPController::class, 'adminStoreEmailOTP']);
 
+    Route::get('admin/emailOTP/verify', [EmailOTPController::class, 'adminEmailOTPVerify']);
+
+    Route::post('admin/emailOTP/verify', [EmailOTPController::class, 'adminStoreEmailOTPVerify']);
+
     Route::post('checkemail', [AdminController::class, 'checkEmail']);
 
     Route::get('admin/changePassword', [AdminController::class, 'adminChangePassword']);

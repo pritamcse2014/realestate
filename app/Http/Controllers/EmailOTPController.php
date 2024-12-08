@@ -26,10 +26,20 @@ class EmailOTPController extends Controller
             $user->email_otp = $randomOTP;
             $user->save();
             Mail::to($request->email)->send(new EmailOTPMail($user, $randomOTP));
-            return redirect()->back()->with('success', 'Email OTP Sent Successfully.');
+            return redirect('admin/emailOTP/verify')->with('success', 'Email OTP Sent Successfully.');
         } else {
             // dd("ELSE");
             return redirect()->back()->with('error', 'Email OTP Sent Failed.');
         }
+    }
+
+    public function adminEmailOTPVerify() {
+        // echo "OTP Verify";
+        // die();
+        return view('admin.emailotp.verify');
+    }
+
+    public function adminStoreEmailOTPVerify(Request $request) {
+        dd($request->all());
     }
 }
