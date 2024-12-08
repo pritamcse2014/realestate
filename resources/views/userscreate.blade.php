@@ -36,7 +36,8 @@
                         </ul>
                     </div>
                     @endif
-                    <form action="" id="regForm">
+                    <form action="{{ url('usersCreate') }}" id="regForm" method="POST">
+                        @csrf
                         <div class="mb-2">
                             <label class="form-label" for="">Enter Your Name</label>
                             <input class="form-control" type="text" name="name" id="" placeholder="Enter Your Name" />
@@ -49,10 +50,12 @@
                             <label class="form-label" for="">Enter Your Password</label>
                             <input class="form-control" type="password" name="password" id="" placeholder="Enter Your Password" />
                         </div>
+                        {{--
                         <div class="mb-2">
                             <label class="form-label" for="">Enter Your Confirm Password</label>
                             <input class="form-control" type="password" name="confirm_password" id="" placeholder="Enter Your Confirm Password" />
                         </div>
+                        --}}
                         <div class="mb-2">
                             <button class="btn btn-success btn-submit" type="submit"><i class="fa fa-save"></i> Submit</button>
                         </div>

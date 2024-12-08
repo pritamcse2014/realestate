@@ -364,3 +364,5 @@ Route::get('wordpressPost', [WordpressPostController::class, 'wordpressPost']);
 Route::get('shopifyPost', [ShopifyPostController::class, 'shopifyPost']);
 
 Route::get('usersCreate', [FormController::class, 'usersCreate']);
+
+Route::post('usersCreate', [FormController::class, 'usersCreateStore']);
