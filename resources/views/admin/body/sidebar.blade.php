@@ -24,6 +24,12 @@
                     <span class="link-title">Users</span>
                 </a>
             </li>
+            <li class="nav-item @if(Request::segment(2) === 'emailOTP') active @endif">
+                <a href="{{ url('admin/emailOTP') }}" class="nav-link">
+                    <i class="link-icon" data-feather="mail"></i>
+                    <span class="link-title">Email OTP</span>
+                </a>
+            </li>
             <li class="nav-item @if(Request::segment(2) === 'users') active @endif">
                 <a href="{{ url('admin/color') }}" class="nav-link">
                     <i class="link-icon" data-feather="feather"></i>

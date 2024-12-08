@@ -10,6 +10,7 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DiscountCodeController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\EmailOTPController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\NotificationController;
@@ -75,6 +76,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::get('admin/users/change-status', [AdminController::class, 'adminUserChangeStatus']);
 
     Route::get('admin/users/typeahead-autocomplete', [AdminController::class, 'adminUsersTypeaheadAutocomplete']);
+
+    Route::get('admin/emailOTP', [EmailOTPController::class, 'adminAddEmailOTP']);
+
+    Route::post('admin/emailOTP', [EmailOTPController::class, 'adminStoreEmailOTP']);
 
     Route::post('checkemail', [AdminController::class, 'checkEmail']);
 
