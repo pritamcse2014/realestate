@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmailOTPController extends Controller
@@ -13,6 +14,19 @@ class EmailOTPController extends Controller
     }
 
     public function adminStoreEmailOTP(Request $request) {
-        dd($request->all());
+        // dd($request->all());
+        $count = User::where('email', '=', $request->email)->count();
+        // dd($count);
+        if (!empty($count)) {
+            // dd("IF");
+            $user = User::where('email', '=', $request->email)->first();
+            $randomOTP = rand(1111, 9999);
+            $user->email_otp = $randomOTP;
+            $user->save();
+            return redirect()->back()->with('success', 'Email OTP Sent Successfully.');
+        } else {
+            // dd("ELSE");
+            return redirect()->back()->with('error', 'Email OTP Sent Failed.');
+        }
     }
 }
