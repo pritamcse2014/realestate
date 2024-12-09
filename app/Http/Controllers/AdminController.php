@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Mail\RegisteredMail;
 use App\Http\Requests\ResetPassword;
 use App\Models\ComposeEmail;
+use App\Models\Orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -25,6 +26,10 @@ class AdminController extends Controller
                 ->get();
         $data['months'] = $user->pluck('month');
         $data['counts'] = $user->pluck('count');
+        // $data['customerCount'] = User::count();
+        $data['customerCount'] = User::where('role', '=', 'user')->count();
+        $data['agentCount'] = User::where('role', '=', 'agent')->count();
+        $data['orderCount'] = Orders::count();
         return view('admin.index', $data);
     }
 
