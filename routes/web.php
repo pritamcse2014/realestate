@@ -375,3 +375,5 @@ Route::get('shopifyPost', [ShopifyPostController::class, 'shopifyPost']);
 Route::get('usersCreate', [FormController::class, 'usersCreate']);
 
 Route::post('usersCreate', [FormController::class, 'usersCreateStore']);
+
+Route::get('eloquentTrashed/{id}', [FormController::class, 'eloquentTrashed']);

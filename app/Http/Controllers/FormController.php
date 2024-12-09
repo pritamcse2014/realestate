@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Color;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -22,5 +23,12 @@ class FormController extends Controller
         $save->save();
 
         return redirect('usersCreate')->with('success', 'User Create Successfully.');
+    }
+
+    public function eloquentTrashed($id) {
+        // dd($id);
+        $getRecord = Color::withTrashed()->find($id);
+        // $getRecord = Color::withTrashed()->findOrFail($id);
+        dd($getRecord);
     }
 }
