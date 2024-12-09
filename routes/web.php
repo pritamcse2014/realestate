@@ -24,6 +24,7 @@ use App\Http\Controllers\ShopifyPostController;
 use App\Http\Controllers\SMTPController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserTimeController;
 use App\Http\Controllers\WordpressPostController;
 use Illuminate\Support\Facades\Route;
@@ -379,3 +380,5 @@ Route::post('usersCreate', [FormController::class, 'usersCreateStore']);
 Route::get('eloquentTrashed/{id}', [FormController::class, 'eloquentTrashed']);
 
 Route::get('readJSON', [FormController::class, 'readJSON']);
+
+Route::get('usersDateFormate', [UserController::class, 'usersDateFormate'])->name('usersDateFormate');
