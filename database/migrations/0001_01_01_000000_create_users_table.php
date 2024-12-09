@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->string('email')->nullable();
             $table->string('email_otp', 255)->nullable()->default(null);
+            $table->tinyInteger('otp_verify')->length(4)->default(0)->comment('0: No Verify, 1: Yes Verify');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('photo')->nullable();

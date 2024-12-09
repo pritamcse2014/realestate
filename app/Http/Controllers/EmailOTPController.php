@@ -40,6 +40,16 @@ class EmailOTPController extends Controller
     }
 
     public function adminStoreEmailOTPVerify(Request $request) {
-        dd($request->all());
+        // dd($request->all());
+        $count = User::where('email_otp', '=', $request->email_otp)->count();
+        if (!empty($count)) {
+            $user = User::where('email_otp', '=', $request->email_otp)->first();
+            $user->otp_verify = 1;
+            $user->save();
+
+            return redirect('admin/emailOTP/verify')->with('success', 'Email OTP Successfully Verified.');
+        } else {
+            return redirect()->back()->with('error', 'Email OTP Verify Failed.');
+        }
     }
 }
