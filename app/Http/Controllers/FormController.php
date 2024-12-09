@@ -31,4 +31,12 @@ class FormController extends Controller
         // $getRecord = Color::withTrashed()->findOrFail($id);
         dd($getRecord);
     }
+
+    public function readJSON(Request $request) {
+        // dd($request->all());
+        $json = file_get_contents(public_path('data/info.json'));
+        // dd($json);
+        $data = json_decode($json, true);
+        return response()->json($data);
+    }
 }
